@@ -2,7 +2,7 @@ import React from 'react';
 
 function Footer() {
   return (
-    <footer className="bg-black text-gray-400 p-6 mt-10 w-full">
+    <footer className="bg-black text-gray-400 p-6  w-full">
       <div className="container mx-auto text-center max-w-screen-lg px-4">
         <nav className="mb-4 flex flex-wrap justify-center space-x-4 md:space-x-6">
           <a href="/privacy" className="hover:text-white text-sm md:text-base">Privacy Policy</a>
