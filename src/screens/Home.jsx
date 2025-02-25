@@ -39,14 +39,18 @@ function Home() {
       style={{ backgroundImage: `url(${Background})` }}
     >
       <div className="bg-black bg-opacity-50 p-6 rounded-lg text-white max-w-lg">
+        <div>
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
           Welcome to Cyber Crew
         </h1>
+        </div>
+        <div>
         <p className="text-base sm:text-lg md:text-xl">
           <span className="text-xl md:text-2xl lg:text-3xl font-bold text-cyan-400 animation typing">
             {typedText}
           </span>
         </p>
+        </div>
       </div>
     </div>
   );
