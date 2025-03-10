@@ -48,8 +48,12 @@ function Home() {
 
     {/* Right: Typing Animation (70%) */}
     <div className="flex-[0.7] text-white text-center md:text-left">
-      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Welcome to <span style={{ fontFamily: 'RachelaClaudie' }}> Cyber Crew </span></h1>
-      <p className="text-xl md:text-3xl lg:text-4xl font-bold text-cyan-400 mt-9">{typedText}</p>
+      {/* <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Welcome to <span style={{ fontFamily: 'RachelaClaudie' }}> Cyber Crew </span></h1> */}
+      <h1 className="text-3xl sm:text-4xl md:text-4xl font-bold mb-4 font-serif">
+  WELCOME TO CYBER CREW
+</h1>
+
+      <p className="text-xl md:text-2xl lg:text-3xl font-bold text-cyan-400 mt-9">{typedText}</p>
     </div>
   </div>
   </div>

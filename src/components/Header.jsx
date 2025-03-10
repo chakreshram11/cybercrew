@@ -13,7 +13,7 @@ function Header() {
       <div className="container mx-auto flex items-center justify-between px-4 md:px-8">
         {/* Logo Section */}
         <div className="flex items-center">
-          <Link to="/" className="text-white text-2xl hover:text-gray-300" style={{ fontFamily: 'RachelaClaudie' }}>
+          <Link to="/" className="text-white text-2xl hover:text-cyan-400 font-semibold" style={{ fontFamily: 'RachelaClaudie' }}>
             Cyber Crew
           </Link>
         </div>
@@ -22,9 +22,9 @@ function Header() {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex flex-grow justify-center">
           <ul className="flex space-x-6 md:space-x-10 text-lg md:text-xl">
-            {["About", "Blog", "Projects", "Contact"].map((item) => (
+            {["ABOUT", "BLOG", "PROJECTS", "CONTACT"].map((item) => (
               <li key={item}>
-                <Link to={`/${item.toLowerCase()}`} className="hover:text-gray-300">
+                <Link to={`/${item.toLowerCase()}`} className="hover:text-cyan-400 font-bold font-serif">
                   {item}
                 </Link>
               </li>
@@ -35,8 +35,8 @@ function Header() {
         {/* Desktop Login Button */}
         <div className="hidden md:block">
           <Link to="/login">
-            <button className="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">
-              Login
+            <button className="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg">
+            <span className="hover:text-cyan-400 font-bold font-serif">Login</span>
             </button>
           </Link>
         </div>
