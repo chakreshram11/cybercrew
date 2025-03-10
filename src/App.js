@@ -7,6 +7,7 @@ import About from './screens/About';
 import Blog from './screens/Blog';
 import Contact from './screens/Contact';
 import Projects from './screens/Projects';
+import Login from './screens/Login';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path='/blog' element={<Blog />} />
           <Route path='/projects' element={<Projects />} />
           <Route path='/contact' element={<Contact />} />
+          <Route path='/login' element={<Login />} />
         </Routes>
       </main>
       <Footer />
