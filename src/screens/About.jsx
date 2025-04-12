@@ -39,7 +39,7 @@ function About() {
       {/* Club Introduction */}
       <div className="max-w-4xl text-center p-8">
         <h2 className="text-3xl md:text-4xl font-bold text-cyan-400 mb-4">
-          About Cyber Crew
+          About Cyber Crew.
         </h2>
         <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
           Welcome to Cyber Crew – where innovation meets security.
