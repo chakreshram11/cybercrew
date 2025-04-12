@@ -42,7 +42,7 @@ function About() {
           About Cyber Crew
         </h2>
         <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
-          Welcome to Cyber Crew – where innovation meets security.
+          Welcome to Cyber Crew – where innovation meets security .
         </p>
         <p className="text-lg md:text-xl text-gray-300 leading-relaxed mt-4">
           Cyber Crew was founded by <span className="text-white font-semibold">Ajay</span> and <span className="text-white font-semibold">Danush</span>, two passionate final-year students who shared a vision to create a community dedicated to cybersecurity learning and growth.
