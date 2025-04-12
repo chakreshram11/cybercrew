@@ -8,6 +8,7 @@ import Blog from './screens/Blog';
 import Contact from './screens/Contact';
 import Projects from './screens/Projects';
 import Login from './screens/Login';
+import BlogDetails from './screens/BlogDetails';
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/about' element={<About />} />
-          <Route path='/blog' element={<Blog />} />
+          <Route path="/blog" element={<Blog />} />  {/* All Blogs */}
+          <Route path="/blog/:id" element={<BlogDetails />} />  {/* Single Blog */}
           <Route path='/projects' element={<Projects />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/login' element={<Login />} />

@@ -13,7 +13,7 @@ function Header() {
       <div className="container mx-auto flex items-center justify-between px-4 md:px-8">
         {/* Logo Section */}
         <div className="flex items-center">
-          <Link to="/" className="text-white text-2xl hover:text-cyan-400 font-semibold" style={{ fontFamily: 'RachelaClaudie' }}>
+          <Link to="/" className="text-white text-2xl hover:text-cyan-400 font-bold" style={{ fontFamily: 'RachelaClaudie' }}>
             Cyber Crew
           </Link>
         </div>
