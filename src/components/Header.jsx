@@ -22,7 +22,7 @@ function Header() {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex flex-grow justify-center">
           <ul className="flex space-x-6 md:space-x-10 text-lg md:text-xl">
-            {["ABOUT", "BLOG","BUGS", "PROJECTS", "CONTACT"].map((item) => (
+            {["ABOUT", "BLOG","BUG", "PROJECTS", "CONTACT"].map((item) => (
               <li key={item}>
                 <Link to={`/${item.toLowerCase()}`} className="hover:text-cyan-400 font-bold font-serif">
                   {item}

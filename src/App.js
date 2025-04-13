@@ -10,6 +10,7 @@ import Projects from './screens/Projects';
 import Login from './screens/Login';
 import BlogDetails from './screens/BlogDetails';
 import Bugs from './screens/Bugs';
+import BugsDetails from './screens/BugsDetails';
 
 function App() {
   return (
@@ -21,7 +22,8 @@ function App() {
           <Route path='/about' element={<About />} />
           <Route path="/blog" element={<Blog />} />  {/* All Blogs */}
           <Route path="/blog/:id" element={<BlogDetails />} />  {/* Single Blog */}
-          <Route path="/bugs" element={<Bugs />} />
+          <Route path="/bug/:id" element={<BugsDetails />} />
+          <Route path="/bug" element={<Bugs />}/>
           <Route path='/projects' element={<Projects />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/login' element={<Login />} />

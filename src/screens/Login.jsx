@@ -13,7 +13,7 @@ function Login() {
           This page is currently under maintenance. Please check back soon!
         </p>
         <div className="mt-6">
-            <Link to="/home">
+            <Link to="/">
           <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
             Back to Home
           </button>

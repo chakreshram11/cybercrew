@@ -7,10 +7,10 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 
 // Import team images (placeholders, replace with actual images)
-import team1 from "../assets/team1.jpg"; // E.g., photo of Ajay or event
-import team2 from "../assets/team2.jpg"; // E.g., photo of Danush or event
-import team3 from "../assets/team3.jpg"; // E.g., photo of Durga Bhavani or event
-import team4 from "../assets/team4.jpg"; // E.g., Cyber Jagrukta Diwas event
+import team1 from "../assets/background.jpg"; // E.g., photo of Ajay or event
+import team2 from "../assets/background.jpg"; // E.g., photo of Danush or event
+import team3 from "../assets/background.jpg"; // E.g., photo of Durga Bhavani or event
+import team4 from "../assets/background.jpg"; // E.g., Cyber Jagrukta Diwas event
 
 function About() {
   return (
