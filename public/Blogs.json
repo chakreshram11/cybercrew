@@ -1,21 +1,40 @@
 [
   {
     "id": "1",
-    "title": "Cybersecurity Basics",
-    "description": "A beginner's guide to cybersecurity fundamentals.",
-    "content": "Cybersecurity is the practice of protecting systems, networks, and programs from digital attacks...",
-    "image": "/logo192.png",
-    "author": "Ajay",
-    "date": "2024-03-10"
-  },  
-    {
-      "id": "2",
-      "title": "Understanding Phishing Attacks",
-      "description": "Learn how cybercriminals use phishing techniques to steal information.",
-      "content": "Phishing is a type of cyber attack where attackers trick users into providing sensitive information...",
-      "image": "https://example.com/images/phishing-attacks.jpg",
-      "author": "Dhanush",
-      "date": "2024-03-11"
-    }
-  ]
-  
+    "title": "First Jagrukta Diwas",
+    "description": "Cyber Awareness Program on cyber crimes",
+    "content": "On 3rd September 2024, we successfully conducted our first Cyber Jagrukta Diwas, an initiative to raise awareness about essential cybersecurity issues. The event focused on educating participants about the growing threats in the digital world and how to stay protected. The key topics covered during the session were Loan App Scams, Women Security Measures, SOS Applications, Cyber Crime Reporting, and Security in Daily Life.\n\nLoan App Scams – Understanding Digital Fraud\nWith the rise of online lending platforms, fraudulent loan apps have become a major concern. Our session educated attendees on how scammers lure victims into taking instant loans with hidden charges, high-interest rates, and threats for repayment. We highlighted ways to identify fake loan apps, the importance of verifying financial services through official regulatory bodies, and steps to take if trapped in such scams.\n\nWomen Security Measures – Ensuring Digital & Physical Safety\nWomen’s safety, both online and offline, was a key focus of our event. We discussed methods to protect personal data, avoid cyberstalking, and handle social media harassment. The session also covered self-defense apps, privacy settings on social media, and reporting cyber harassment to law enforcement. The goal was to empower women with knowledge and tools to safeguard themselves in the digital world.\n\nSOS Applications – Emergency Support at Your Fingertips\nIn emergencies, quick access to help can be life-saving. We introduced SOS applications that allow users to send alerts to family, friends, and authorities with just a click. Apps like 112 India, CitizenCOP, and My Safetipin were highlighted for their real-time tracking, emergency calling, and location-sharing features. Practical demonstrations helped participants understand how to configure and use these apps effectively.\n\nCyber Crime Reporting – Taking Action Against Online Threats\nMany cybercrimes go unreported due to a lack of awareness. Our session focused on the National Cyber Crime Reporting Portal (www.cybercrime.gov.in), where victims can report cyber fraud, harassment, and other digital crimes. We explained the legal framework, the role of law enforcement, and the importance of timely reporting to ensure proper action is taken against cybercriminals.\n\nSecurity in Daily Life – Practicing Safe Digital Habits\nCybersecurity isn’t just about responding to threats—it’s about preventing them. We emphasized strong password management, two-factor authentication, secure online transactions, and identifying phishing emails. Participants learned how to recognize fake websites, secure their personal devices, and safely use public Wi-Fi networks. Practical tips on digital hygiene were shared to help integrate cybersecurity into daily routines.\n\nConclusion\nOur first Cyber Jagrukta Diwas was a successful step toward building a more cyber-aware community. The event provided practical knowledge and real-world examples to help participants navigate the digital space securely. We aim to continue organizing such initiatives, spreading awareness, and empowering individuals with cybersecurity skills. Together, we can create a safer digital world!",
+    "images": [
+      "/blog1-1.jpeg",
+      "/blog1-2.jpeg"
+    ],
+    "author": "CYBER CREW",
+    "date": "2024-03-09"
+  },
+  {
+    "id": "2",
+    "title": "Second Jagrukta Diwas",
+    "description": "Awareness Session on Hardware Hacking",
+    "content": "we conducted another awareness session on 1st October 2024, focusing on Hardware Hacking, Hardware Security, Virtualization, Assembling & Disassembling, Flipper Zero & Raspberry Pi, Keyloggers, and Data Breaches. This event aimed to deepen participants' understanding of both hardware and software-based security threats, equipping them with hands-on knowledge to defend against cyber risks.\n\nHardware Hacking & Hardware Security – Understanding the Risks\nWith the increasing use of embedded systems and IoT devices, hardware hacking has become a serious concern. We explored how attackers exploit vulnerabilities in hardware components and the methods to protect devices from unauthorized access. The session also covered BIOS/UEFI security, firmware attacks, and secure boot mechanisms to prevent unauthorized modifications at the hardware level.\n\nVirtualization – Enhancing Security & Efficiency\nVirtualization plays a crucial role in modern computing and cybersecurity. We explained the importance of virtual machines (VMs) and sandboxing for security testing and malware analysis. The session demonstrated how virtualization helps isolate threats, create safe testing environments, and optimize system resources while reducing hardware dependency.\n\nAssembling & Disassembling – Hands-On Hardware Learning\nUnderstanding the internal components of a computer is essential for both troubleshooting and security. Participants learned to assemble and disassemble PCs and laptops, gaining hands-on experience with RAM installation, motherboard connections, power supply configurations, and hardware diagnostics. This practical session enhanced their ability to detect and fix hardware-related vulnerabilities.\n\nFlipper Zero & Raspberry Pi – The Power of Portable Hacking Devices\nThe session introduced Flipper Zero and Raspberry Pi, two versatile tools used for cybersecurity research and penetration testing. We demonstrated how these devices can be used for ethical hacking, network scanning, RFID/NFC cloning, and automation tasks. The discussion also highlighted the ethical boundaries and responsible use of such tools to prevent misuse.\n\nKeyloggers – The Silent Threat to Cybersecurity\nKeyloggers are one of the most dangerous tools used in cyberattacks to steal credentials and sensitive information. We covered the different types of hardware and software keyloggers, their functioning, and real-world case studies of cyber espionage. The session emphasized how to detect, prevent, and remove keyloggers using anti-malware tools, behavioral analysis, and secure authentication methods.\n\nData Breaches – Protecting Sensitive Information\nData breaches have become a major concern in the digital world. We discussed recent high-profile breaches, their impact on individuals and organizations, and the techniques cybercriminals use to steal data through phishing, malware, and weak security configurations. The session concluded with best practices for data protection, encryption, and safe online behavior to prevent unauthorized access to personal and corporate information.\n\nConclusion\nThe 1st October Cyber Jagrukta Diwas successfully provided hands-on knowledge about hardware security, ethical hacking tools, virtualization, and cyber threats. By combining theoretical concepts with real-world demonstrations, participants gained a deeper understanding of cybersecurity risks and defenses. These sessions continue to empower individuals with the skills needed to secure hardware, software, and digital assets in an evolving cyber landscape.",
+    "images": [
+      "/blog2-1.jpg",
+      "/blog2-2.jpg",
+      "/blog2-4.jpg"
+    ],
+    "author": "CYBER CREW",
+    "date": "2024-01-10"
+  },
+  {
+    "id": "3",
+    "title": "Understanding Phishing Attacks",
+    "description": "Learn how cybercriminals use phishing techniques to steal information.",
+    "content": "Phishing is a type of cyber attack where attackers trick users into providing sensitive information...",
+    "images": [
+      "/blog3-1.jpg",
+      "/blog3-2.jpg",
+      "/blog3-4.jpg"
+    ],
+    "author": "Dhanush",
+    "date": "2024-03-11"
+  }
+]
