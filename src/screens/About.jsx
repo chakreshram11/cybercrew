@@ -49,9 +49,10 @@ function About() {
       </div>
 
       {/* Club Introduction */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 text-center">
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-cyan-400 mb-6 tracking-tight animate-fade-in">
-          About Cyber Crew
+
+      <div className="max-w-4xl text-center p-8">
+        <h2 className="text-3xl md:text-4xl font-bold text-cyan-400 mb-4">
+          About Cyber Crew.
         </h2>
         <p className="text-base sm:text-lg lg:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
           Welcome to Cyber Crew – where innovation meets security.
