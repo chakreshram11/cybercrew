@@ -6,11 +6,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-fade";
 
-// Import team images (replace with unique images)
-import team1 from "../assets/background.jpg"; // Update with actual image
-import team2 from "../assets/background.jpg"; // Update with actual image
-import team3 from "../assets/background.jpg"; // Update with actual image
-import team4 from "../assets/background.jpg"; // Update with actual image
+// Import team images (placeholders, replace with actual images)
+import team1 from "../assets/team1.jpg"; // E.g., photo of Ajay or event
+import team2 from "../assets/team2.jpg"; // E.g., photo of Danush or event
+import team3 from "../assets/team3.jpg"; // E.g., photo of Durga Bhavani or event
+import team4 from "../assets/team4.jpg"; // E.g., Cyber Jagrukta Diwas event
 
 function About() {
   return (
@@ -50,7 +50,7 @@ function About() {
 
       {/* Club Introduction */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 text-center">
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-cyan-400 mb-6 tracking-tight">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-cyan-400 mb-6 tracking-tight animate-fade-in">
           About Cyber Crew
         </h2>
         <p className="text-base sm:text-lg lg:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
@@ -134,4 +134,4 @@ function About() {
   );
 }
 
-export default About;   
+export default About;
