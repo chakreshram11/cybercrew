@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Autoplay, EffectFade } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -7,25 +8,54 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 
 // Import team images (placeholders, replace with actual images)
-import team1 from "../assets/background.jpg"; // E.g., photo of Ajay or event
-import team2 from "../assets/background.jpg"; // E.g., photo of Danush or event
-import team3 from "../assets/background.jpg"; // E.g., photo of Durga Bhavani or event
-import team4 from "../assets/background.jpg"; // E.g., Cyber Jagrukta Diwas event
+import team1 from "../assets/blog1-1.jpeg"; // E.g., photo of Ajay or event
+import team2 from "../assets/blog2-1.jpg"; // E.g., photo of Danush or event
+import team3 from "../assets/blog3-1.jpg"; // E.g., photo of Durga Bhavani or event
+import team4 from "../assets/groupphoto.jpg"; // E.g., photo of Cyber Jagrukta Diwas event
 
 function About() {
+  const navigate = useNavigate();
+
   return (
-    <section className="w-full min-h-screen bg-gray-900 text-white">
+    <section className="w-full min-h-screen bg-gray-900 text-white flex flex-col">
+      {/* Back Button */}
+      <div className="absolute top-4 left-4 z-10">
+        <button
+          onClick={() => navigate(-1)}
+          className="flex items-center gap-2 px-4 py-2 bg-cyan-500 text-gray-900 font-semibold rounded-lg shadow-md hover:bg-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-300 transition-all duration-200"
+          aria-label="Go back to previous page"
+        >
+          <svg
+            className="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+          Back
+        </button>
+      </div>
+
       {/* Image Scroller */}
       <div className="w-full max-w-[100vw] overflow-hidden">
         <Swiper
           spaceBetween={0}
           slidesPerView={1}
           loop={true}
-          autoplay={{ delay: 4000, disableOnInteraction: false }}
+          autoplay={{ delay: 4000, disableOnInteraction: false, reverseDirection: true }}
           speed={1200}
           effect="fade"
           modules={[Autoplay, EffectFade]}
-          className="w-full h-80 sm:h-[32rem] lg:h-[40rem]"
+          className="w-full h-64 sm:h-96 lg:h-[36rem]"
+          reverseDirection={true}
+          dir="rtl"
         >
           {[
             { src: team1, alt: "Cyber Crew Event 1" },
@@ -38,10 +68,10 @@ function About() {
                 <img
                   src={image.src}
                   alt={image.alt}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover scale-105"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-gray-900/60"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-gray-900/70"></div>
               </div>
             </SwiperSlide>
           ))}
@@ -49,10 +79,9 @@ function About() {
       </div>
 
       {/* Club Introduction */}
-
-      <div className="max-w-4xl text-center p-8">
-        <h2 className="text-3xl md:text-4xl font-bold text-cyan-400 mb-4">
-          About Cyber Crew.
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-cyan-400 mb-6 tracking-tight animate-fade-in">
+          About Cyber Crew
         </h2>
         <p className="text-base sm:text-lg lg:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
           Welcome to Cyber Crew – where innovation meets security.
@@ -69,7 +98,7 @@ function About() {
           applying his skills in the industry.
         </p>
 
-        <h3 className="text-2xl sm:text-3xl font-semibold text-cyan-400 mt-12 mb-4 tracking-tight">
+        <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-cyan-400 mt-12 mb-4 tracking-tight">
           Our Mission
         </h3>
         <p className="text-base sm:text-lg lg:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
@@ -80,7 +109,7 @@ function About() {
           resources, and mentorship to help you succeed.
         </p>
 
-        <h3 className="text-2xl sm:text-3xl font-semibold text-cyan-400 mt-12 mb-4 tracking-tight">
+        <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-cyan-400 mt-12 mb-4 tracking-tight">
           What We Offer
         </h3>
         <ul className="list-none text-left text-base sm:text-lg lg:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto space-y-4">
@@ -110,7 +139,7 @@ function About() {
               key={index}
               className="flex items-start space-x-3 transition-transform duration-300 hover:translate-x-2"
             >
-              <span className="text-cyan-400">•</span>
+              <span className="text-cyan-400 text-xl">•</span>
               <div>
                 <span className="text-white font-medium">{item.title}:</span>{" "}
                 {item.desc}
@@ -119,7 +148,7 @@ function About() {
           ))}
         </ul>
 
-        <h3 className="text-2xl sm:text-3xl font-semibold text-cyan-400 mt-12 mb-4 tracking-tight">
+        <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-cyan-400 mt-12 mb-4 tracking-tight">
           Join Us
         </h3>
         <p className="text-base sm:text-lg lg:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
