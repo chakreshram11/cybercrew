@@ -1,72 +1,59 @@
 import React from "react";
 // import { Link } from "react-router-dom";
-import Goutham from "../assets/cybercrewlogo.png";
-
+import Webscanner from "../assets/Webscanner.png"
+import Pradeep from "../linkedin images/Pradeep.jpg"
+import Sanjay from "../linkedin images/Sanjay.jpg"
+import Thabitha from "../linkedin images/Thabitha.jpg"
+import sahithya from "../linkedin images/Sahithya.jpg"
+import Gowtham from "../linkedin images/Gowtham.jpg"
+import jyothi from "../linkedin images/Jyothi.jpg"
 function WebScanner() {
   const features = [
     {
-      image: "/projects/webscanner-vuln.jpg",
+      image: Webscanner,
       title: "Vulnerability Scanning",
       description:
         "Perform comprehensive scans to identify vulnerabilities in web applications, ensuring proactive protection against cyber threats.",
-    },
-    {
-      image: "/projects/webscanner-xss.jpg",
-      title: "XSS Detection",
-      description:
-        "Detect cross-site scripting (XSS) vulnerabilities with precision, safeguarding user data and preventing malicious script injections.",
-    },
-    {
-      image: "/projects/webscanner-sql.jpg",
-      title: "SQL Injection Detection",
-      description:
-        "Identify SQL injection risks in your web applications, protecting databases from unauthorized access and data breaches.",
-    },
-    {
-      image: "/projects/webscanner-config.jpg",
-      title: "Misconfiguration Analysis",
-      description:
-        "Analyze and resolve server misconfigurations, strengthening your web application’s security posture against modern exploits.",
-    },
+    }
   ];
 
   const team = [
     {
-      name: "Ajay",
-      image: Goutham,
-      linkedin: "https://linkedin.com/in/ajay",
-      github: "https://github.com/ajay",
+      name: "Gowtham",
+      image: Gowtham,
+      linkedin: "https://www.linkedin.com/in/gowtham-satya-sai-m",
+
     },
     {
-      name: "Dhanush",
-      image: "/founders/dhanush.jpg",
-      linkedin: "https://linkedin.com/in/dhanush",
-      github: "https://github.com/dhanush",
+      name: "Pradeep",
+      image: Pradeep,
+      linkedin: "https://www.linkedin.com/in/gopisetti-pradeep-5aa4a0250",
+      
     },
     {
-      name: "Priya",
-      image: "/founders/priya.jpg",
-      linkedin: "https://linkedin.com/in/priya",
-      github: "https://github.com/priya",
+      name: "Sanjay",
+      image: Sanjay,
+      linkedin: "https://www.linkedin.com/in/mudigondasanjay",
+      
     },
     {
-      name: "Rahul",
-      image: "/founders/rahul.jpg",
-      linkedin: "https://linkedin.com/in/rahul",
-      github: "https://github.com/rahul",
+      name: "Jyothi",
+      image: jyothi,
+      linkedin: "https://www.linkedin.com/in/telegareddy-jyothirmai-686750286",
+      
     },
     {
-      name: "Sneha",
-      image: "/founders/sneha.jpg",
-      linkedin: "https://linkedin.com/in/sneha",
-      github: "https://github.com/sneha",
+      name: "Thabitha",
+      image: Thabitha,
+      linkedin: "https://www.linkedin.com/in/thabitha-gogulamanda-3a3960288",
+      
     },
     {
-      name: "Vikram",
-      image: "/founders/vikram.jpg",
-      linkedin: "https://linkedin.com/in/vikram",
-      github: "https://github.com/vikram",
-    },
+      name: "Naga Lakshmi",
+      image: sahithya,
+      linkedin: "https://www.linkedin.com/in/siramalasiramala",
+      
+    }
   ];
 
   return (
@@ -157,7 +144,7 @@ function WebScanner() {
                       <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-1.337-.027-3.063-1.867-3.063-1.867 0-2.153 1.459-2.153 2.968v5.699h-3v-11h2.879v1.526h.04c.401-.758 1.379-1.559 2.837-1.559 3.035 0 3.604 2.001 3.604 4.604v6.429z" />
                     </svg>
                   </a>
-                  <a
+                  {/* <a
                     href={member.github}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -172,7 +159,7 @@ function WebScanner() {
                     >
                       <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.605-.015 2.906-.015 3.3 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
                     </svg>
-                  </a>
+                  </a> */}
                 </div>
               </div>
             ))}
@@ -185,7 +172,7 @@ function WebScanner() {
             Explore the Project
           </h2>
           <a
-            href="https://github.com/cybercrew/webscanner"
+            href="https://github.com/gowthamsai117/Vulnerability-Web-Scanner"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block px-6 py-3 bg-cyan-500 text-white font-semibold rounded-md shadow-md hover:bg-cyan-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-400"
@@ -200,3 +187,4 @@ function WebScanner() {
 }
 
 export default WebScanner;
+
