@@ -2,32 +2,32 @@
     {
       "id": "1",
       "name": "Web Scanner",
-      "description": "A real-time encrypted messaging app ensuring end-to-end privacy for users.",
+      "description": "A real-time encrypted messaging app ensuring end-to-end privacy for users. It uses advanced encryption protocols to ensure that messages are secure from interception, providing users with confidential communication.",
       "path": "/webscanner"
     },
     {
       "id": "2",
       "name": "Encrypto Web",
-      "description": "An automated tool to detect vulnerabilities in web applications using AI.",
+      "description": "An automated tool to detect vulnerabilities in web applications using AI. This tool leverages machine learning algorithms to identify security weaknesses and provides real-time analysis for developers to patch vulnerabilities promptly.",
       "path": "/encryptoweb"
     },
     {
       "id": "3",
       "name": "Emoji Cipher",
-      "description": "A firewall solution to monitor and block malicious network traffic.",
+      "description": "A firewall solution to monitor and block malicious network traffic. This system uses advanced machine learning models to identify patterns in traffic and automatically adjusts security protocols to safeguard against evolving threats.",
       "path": "/emojicipher"
     },
     {
       "id": "4",
       "name": "Secure Hospital Network",
-      "description": "A firewall solution to monitor and block malicious network traffic.",
+      "description": "A network security solution designed using Cisco Packet Tracer to secure hospital systems. It includes measures to protect patient data, maintain HIPAA compliance, and ensure seamless operations across hospital networks, safeguarding critical infrastructure from cyber threats.",
       "path": "/safehospitalnetworks"
     },
     {
       "id": "5",
-      "name": "CyberGuard",
-      "description": "A firewall solution to monitor and block malicious network traffic.",
+      "name": "DeepNetGaurd",
+      "description": "A firewall solution to monitor and block malicious network traffic. It integrates with enterprise-grade threat intelligence platforms to detect and prevent advanced persistent threats (APTs), ensuring 24/7 network security and minimal downtime for business-critical operations.",
       "path": "/deepnetgaurd"
-      
     }
   ]
+  

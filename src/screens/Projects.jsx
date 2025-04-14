@@ -39,7 +39,7 @@ function Projects() {
                   {project.description}
                 </p>
                 <span className="inline-flex items-center mt-3 text-cyan-400 text-sm sm:text-base font-medium transition-colors duration-200 group-hover:text-cyan-300">
-                  Learn More
+                  Read More
                   <svg
                     className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-200"
                     fill="none"
