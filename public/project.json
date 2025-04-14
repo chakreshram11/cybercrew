@@ -1,0 +1,33 @@
+[
+    {
+      "id": "1",
+      "name": "Web Scanner",
+      "description": "A real-time encrypted messaging app ensuring end-to-end privacy for users.",
+      "path": "/webscanner"
+    },
+    {
+      "id": "2",
+      "name": "Encrypto Web",
+      "description": "An automated tool to detect vulnerabilities in web applications using AI.",
+      "path": "/encryptoweb"
+    },
+    {
+      "id": "3",
+      "name": "Emoji Cipher",
+      "description": "A firewall solution to monitor and block malicious network traffic.",
+      "path": "/emojicipher"
+    },
+    {
+      "id": "4",
+      "name": "Secure Hospital Network",
+      "description": "A firewall solution to monitor and block malicious network traffic.",
+      "path": "/safehospitalnetworks"
+    },
+    {
+      "id": "5",
+      "name": "CyberGuard",
+      "description": "A firewall solution to monitor and block malicious network traffic.",
+      "path": "/deepnetgaurd"
+      
+    }
+  ]
