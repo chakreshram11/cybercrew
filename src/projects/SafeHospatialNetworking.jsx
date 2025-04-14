@@ -15,7 +15,7 @@ function SafeHospatialNetworking() {
 
   const team = [
     {
-      name: "Vasu",
+      name: "Durga Srinivas Kurra",
       image: vasu,
       linkedin: "https://www.linkedin.com/in/durgasrinivaskurra/"
     }

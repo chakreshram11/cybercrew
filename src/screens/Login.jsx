@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 function Login() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white p-8">
       <div className="bg-gray-800 p-8 rounded-lg shadow-lg text-center max-w-md">
         <h1 className="text-3xl font-bold mb-4">Login Page</h1>
         <p className="text-lg text-gray-300">
