@@ -1,0 +1,35 @@
+[
+  {
+    "id": "1",
+    "title": "FTP Vulnerability",
+    "description": "Cyber Crew team exploited anonymous FTP login on kietgroup.info, exposing sensitive data",
+    "content": "Our Cyber Crew team, led by Ajay, uncovered a critical FTP vulnerability on kietgroup.info, where anonymous login granted access to faculty and student information, plus confidential documents. This discovery highlights the risks of misconfigured FTP servers, including data leaks and potential misuse. Below are the 11 team members who contributed to or learned from this finding, showcasing our collaborative effort in cybersecurity research.\n\n- [Ajay](https://linkedin.com/in/ajay)\n- [Priya](https://linkedin.com/in/priya)\n- [Rahul](https://linkedin.com/in/rahul)\n- [Sneha](https://linkedin.com/in/sneha)\n- [Vikram](https://linkedin.com/in/vikram)\n- [Anjali](https://linkedin.com/in/anjali)\n- [Kiran](https://linkedin.com/in/kiran)\n- [Meera](https://linkedin.com/in/meera)\n- [Arjun](https://linkedin.com/in/arjun)\n- [Nisha](https://linkedin.com/in/nisha)\n- [Rohan](https://linkedin.com/in/rohan)\n\nThis vulnerability exposed personal and institutional data, emphasizing the need for secure authentication. We recommend disabling anonymous access, enforcing strong credentials, and auditing server configurations.",
+    "images": [
+      "/students/student1.jpg",
+      "/students/student2.jpg",
+      "/students/student3.jpg",
+      "/students/student4.jpg",
+      "/students/student5.jpg",
+      "/students/student6.jpg",
+      "/students/student7.jpg",
+      "/students/student8.jpg",
+      "/students/student9.jpg",
+      "/students/student10.jpg",
+      "/students/student11.jpg"
+    ],
+    "students": [
+      { "name": "Ajay", "linkedin": "https://linkedin.com/in/ajay", "photo": "/students/student1.jpg" },
+      { "name": "Priya", "linkedin": "https://linkedin.com/in/priya", "photo": "/students/student2.jpg" },
+      { "name": "Rahul", "linkedin": "https://linkedin.com/in/rahul", "photo": "/students/student3.jpg" },
+      { "name": "Sneha", "linkedin": "https://linkedin.com/in/sneha", "photo": "/students/student4.jpg" },
+      { "name": "Vikram", "linkedin": "https://linkedin.com/in/vikram", "photo": "/students/student5.jpg" },
+      { "name": "Anjali", "linkedin": "https://linkedin.com/in/anjali", "photo": "/students/student6.jpg" },
+      { "name": "Kiran", "linkedin": "https://linkedin.com/in/kiran", "photo": "/students/student7.jpg" },
+      { "name": "Meera", "linkedin": "https://linkedin.com/in/meera", "photo": "/students/student8.jpg" },
+      { "name": "Arjun", "linkedin": "https://linkedin.com/in/arjun", "photo": "/students/student9.jpg" },
+      { "name": "Nisha", "linkedin": "https://linkedin.com/in/nisha", "photo": "/students/student10.jpg" },
+      { "name": "Rohan", "linkedin": "https://linkedin.com/in/rohan", "photo": "/students/student11.jpg" }
+    ],
+    "date": "2025-02-10"
+  }
+]
