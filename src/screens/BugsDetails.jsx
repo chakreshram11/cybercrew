@@ -286,7 +286,7 @@ function BugsDetails() {
               }}
             />
             <button
-              className="absolute top-2 right-2 text-white bg-gray-800 rounded-full p-2 hover:bg-gray-700 transition"
+              className="absolute top-2 right-2  text-white bg-gray-800 rounded-full p-2 hover:bg-gray-700 transition"
               onClick={closeImageModal}
               aria-label="Close image modal"
             >

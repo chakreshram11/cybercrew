@@ -114,7 +114,7 @@ function Home() {
                 onError={(e) => (e.target.src = "/assets/fallback.jpg")}
               />
               <p
-                className="mt-6 text-base sm:text-lg md:text-xl font-medium text-white text-center whitespace-pre-line"
+                className="mt-6 text -base sm:text-lg md:text-xl font-medium text-white text-center whitespace-pre-line"
               >
                 {member.name}
               </p>

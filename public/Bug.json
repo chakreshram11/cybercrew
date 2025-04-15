@@ -43,7 +43,7 @@
     "content": "Our Cyber Crew member, **K Durga Srinivas**, uncovered a serious **price tampering vulnerability** in the college website. This flaw allowed users to manipulate the price values of online services or products offered through the website by intercepting and modifying data being sent to the server.\n\nPrice tampering occurs when client-side validations are relied upon instead of proper server-side checks. Attackers can exploit this by using browser developer tools or intercepting network requests to change prices before submission.\n\nThis vulnerability could lead to unauthorized discounts, free access to paid services, or financial losses for the institution. It highlights the importance of implementing strict **server-side validation** and integrity checks on all sensitive transactions.\n\nWe recommend the following mitigations:\n- Never trust client-side inputs for pricing or payment logic\n- Implement secure server-side validation and verification\n- Use encrypted communication channels (HTTPS) and monitor for abnormal patterns\n\nThis discovery further showcases the importance of web application security and the proactive efforts of our Cyber Crew in identifying and reporting such issues",
     "images": ["/price1.jpg", "/price2.jpg"],
     "students": [
-      { "name": "K Durga Srinivas", "photo": "./vasu.jpg" }
+      { "name": "K Durga Srinivas",  "photo": "./vasu.jpg" }
     ],
     "date": "2025-02-12"
   }
