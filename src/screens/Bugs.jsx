@@ -18,7 +18,7 @@ function Bugs() {
           Bugs we've Found
         </h1>
         {bugs.length === 0 ? (
-          <div className="flex justify-center items-center h-64">
+          <div className="flex justify-center  items-center h-64">
             <p className="text-gray-300 text-lg font-medium animate-pulse">
               Loading bugs...
             </p>
