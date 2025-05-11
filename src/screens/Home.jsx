@@ -70,7 +70,7 @@ function Home() {
   </div>
 </div>
 
-      <section className="w-full bg-gray-800 text-white flex flex-col items-center py-12 md:py-16">
+      <section className="w-full min-h-screen bg-gray-800 text-white flex flex-col items-center py-12 md:py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-cyan-400 mb-6 tracking-tight">
             About Us
@@ -124,7 +124,7 @@ function Home() {
       </section>
 
       {/* Blog Section */}
-      <section className="w-full bg-gray-900 text-white py-16 px-4 sm:px-6 lg:px-8">
+      <section className="w-full min-h-screen bg-gray-900 text-white py-16 px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl sm:text-5xl font-bold text-cyan-400 text-center mb-12 tracking-tight">
           Latest Blogs
         </h2>
@@ -178,7 +178,7 @@ function Home() {
       </section>
 
       {/* Bug Section */}
-      <section className="w-full bg-gray-800 text-white py-16 px-4 sm:px-6 lg:px-8">
+      <section className="w-full min-h-screen bg-gray-800 text-white py-16 px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl sm:text-5xl font-bold text-cyan-400 text-center mb-12 tracking-tight animate-fade-in">
           Bugs We’ve Found
         </h2>
@@ -240,7 +240,7 @@ function Home() {
       </section>
 
       {/* Projects Section */}
-      <section className="bg-gray-900 text-white py-16 px-4 sm:px-6 lg:px-8">
+      <section className="bg-gray-900 min-h-screen text-white py-16 px-4 sm:px-6 lg:px-8">
         <h1 className="text-5xl text-cyan-400 text-center mb-12">All Projects</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {projects.map((project) => (
