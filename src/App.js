@@ -16,12 +16,14 @@ import EmojiChipher from './projects/EmojiChipher';
 import EncryptoWeb from './projects/EncryptoWeb';
 import SafeHospatialNetworking from './projects/SafeHospatialNetworking';
 import WebScanner from './projects/WebScanner';
+import ScrollToTop from './components/ScrollToTop'
 
 function App() {
   return (
     <Router>
       <Header />
       <main className="pt-20"> {/* Adjust padding to avoid overlap */}
+         <ScrollToTop />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/about' element={<About />} />
