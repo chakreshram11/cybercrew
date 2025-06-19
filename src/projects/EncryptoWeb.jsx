@@ -129,11 +129,11 @@ function EncryptoWeb() {
           <h2 className="text-2xl sm:text-3xl font-semibold text-white text-center mb-8">
             Meet the Team
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8">
             {team.map((member, index) => (
   <div
     key={index}
-    className="bg-gray-700 rounded-xl p-4 flex flex-col items-center text-center hover:shadow-lg transition-shadow duration-300"
+    className="flex flex-col items-center text-center hover:shadow-lg transition-shadow duration-300"
   >
     <img
       src={member.image}
@@ -162,7 +162,7 @@ function EncryptoWeb() {
             Explore the Project
           </h2>
           <a
-            href="https://github.com/gowthamsai117/Vulnerability-Web-Scanner"
+            href="https://github.com/chakreshram11/Kill_project"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block px-6 py-3 bg-cyan-500 text-white font-semibold rounded-md shadow-md hover:bg-cyan-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-400"

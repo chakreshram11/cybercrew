@@ -1,10 +1,10 @@
 import React from "react";
-// import { Link } from "react-router-dom";
-import net1 from "../assets/deepnet1.jpg"
-import net2 from "../assets/deepnet2.jpg"
-import daniel from "../linkedin images/Daniel.jpg"
-import arshith from "../linkedin images/Arshith.jpg"
-import sri from "../linkedin images/sri karthik.jpg"
+import net1 from "../assets/deepnet1.jpg";
+import net2 from "../assets/deepnet2.jpg";
+import daniel from "../linkedin images/Daniel.jpg";
+import arshith from "../linkedin images/Arshith.jpg";
+import sri from "../linkedin images/sri karthik.jpg";
+
 function DeepNetGaurd() {
   const features = [
     {
@@ -19,34 +19,32 @@ function DeepNetGaurd() {
       description:
         "Visualize network activity and threat patterns through an intuitive dashboard, powered by advanced analytics for proactive monitoring.",
     },
-  
   ];
 
   const team = [
     {
       name: "Daniel",
       image: daniel,
-      linkedin: "https://www.linkedin.com/in/daniel-blesson-korukonda-0ba6a8246",
+      linkedin:
+        "https://www.linkedin.com/in/daniel-blesson-korukonda-0ba6a8246",
     },
     {
       name: "Arshith",
       image: arshith,
       linkedin: "https://www.linkedin.com/in/dhuba-arshith-3902a6259/",
-
     },
     {
       name: "Sri Karthik",
       image: sri,
       linkedin: "https://www.linkedin.com/in/srikarthikpampana/",
-
-    }
+    },
   ];
 
   return (
     <section className="w-full bg-gray-900 text-white min-h-screen py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <h1 className="text-4xl sm:text-5xl font-bold text-cyan-400 text-center mb-12 tracking-tight animate-fade-in">
+        {/* Title */}
+        <h1 className="text-4xl sm:text-5xl font-bold text-cyan-400 text-center mb-12 tracking-tight">
           DeepNet Guardian
         </h1>
 
@@ -64,7 +62,7 @@ function DeepNetGaurd() {
           </p>
         </div>
 
-        {/* Features Section */}
+        {/* Features */}
         <div className="mb-12">
           <h2 className="text-2xl sm:text-3xl font-semibold text-white text-center mb-8">
             Key Features
@@ -77,7 +75,7 @@ function DeepNetGaurd() {
               >
                 <img
                   src={feature.image}
-                  alt={`${feature.title} preview`}
+                  alt={feature.title}
                   className="w-full h-48 rounded-md object-cover mb-4 transition-transform duration-300 hover:scale-105"
                   loading="lazy"
                 />
@@ -92,7 +90,7 @@ function DeepNetGaurd() {
           </div>
         </div>
 
-        {/* Team Section */}
+        {/* Team */}
         <div className="bg-gray-800 rounded-xl p-6 sm:p-8 shadow-lg mb-12">
           <h2 className="text-2xl sm:text-3xl font-semibold text-white text-center mb-8">
             Meet the Team
@@ -105,66 +103,47 @@ function DeepNetGaurd() {
               >
                 <img
                   src={member.image}
-                  alt={`${member.name}, WebScanner founder`}
+                  alt={member.name}
                   className="w-32 h-32 rounded-full object-cover shadow-md mb-4"
                 />
                 <h3 className="text-xl font-medium text-white mb-2">
                   {member.name}
                 </h3>
-                <div className="flex gap-4">
-                  <a
-                    href={member.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-cyan-400 hover:text-cyan-300 transition-colors duration-200"
-                    aria-label={`Visit ${member.name}'s LinkedIn profile`}
+                <a
+                  href={member.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-cyan-400 hover:text-cyan-300 transition-colors duration-200"
+                  aria-label={`${member.name} LinkedIn`}
+                >
+                  <svg
+                    className="w-6 h-6"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
                   >
-                    <svg
-                      className="w-6 h-6"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-1.337-.027-3.063-1.867-3.063-1.867 0-2.153 1.459-2.153 2.968v5.699h-3v-11h2.879v1.526h.04c.401-.758 1.379-1.559 2.837-1.559 3.035 0 3.604 2.001 3.604 4.604v6.429z" />
-                    </svg>
-                  </a>
-                  {/* <a
-                    href={member.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-cyan-400 hover:text-cyan-300 transition-colors duration-200"
-                    aria-label={`Visit ${member.name}'s GitHub profile`}
-                  >
-                    <svg
-                      className="w-6 h-6"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.605-.015 2.906-.015 3.3 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-                    </svg>
-                  </a> */}
-                </div>
+                    <path d="M19 0h-14C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zm-9 19H7V9h3v10zm-1.5-11.3c-.97 0-1.75-.78-1.75-1.75S7.53 4.2 8.5 4.2s1.75.78 1.75 1.75S9.47 7.7 8.5 7.7zM20 19h-3v-5.6c0-1.34-.03-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.97V19h-3V9h2.89v1.37h.04c.4-.76 1.37-1.56 2.83-1.56 3.03 0 3.59 1.99 3.59 4.58V19z" />
+                  </svg>
+                </a>
               </div>
             ))}
           </div>
         </div>
-
         {/* Project GitHub Link */}
-        <div className="text-center">
-          <h2 className="text-2xl sm:text-3xl font-semibold text-white mb-4">
-            Explore the Project
-          </h2>
-          <a
-            href="https://github.com/gowthamsai117/Vulnerability-Web-Scanner"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block px-6 py-3 bg-cyan-500 text-white font-semibold rounded-md shadow-md hover:bg-cyan-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-400"
-            aria-label="Visit WebScanner's GitHub repository"
-          >
-            View on GitHub
-          </a>
-        </div>
+         <div className="text-center">
+           <h2 className="text-2xl sm:text-3xl font-semibold text-white mb-4">
+             Explore the Project
+           </h2>
+           <a
+             href="https://github.com/gowthamsai117/Vulnerability-Web-Scanner"
+             target="_blank"
+             rel="noopener noreferrer"
+             className="inline-block px-6 py-3 bg-cyan-500 text-white font-semibold rounded-md shadow-md hover:bg-cyan-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+             aria-label="Visit WebScanner's GitHub repository"
+           >
+             View on GitHub
+           </a>
+         </div> 
       </div>
     </section>
   );

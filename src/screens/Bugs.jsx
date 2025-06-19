@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Bugs() {
   const [bugs, setBugs] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("/bug.json")
@@ -13,6 +14,14 @@ function Bugs() {
 
   return (
     <section className="bg-gray-900 min-h-screen text-white py-12 px-4 sm:px-6 lg:px-8">
+      <div className="mb-8 text-left">
+        <button 
+          onClick={() => navigate(-1)} 
+          className="border-4 border-sky-500 bg-gray-900 rounded-lg p-2 pl-3 pr-3 ml-3 text-lg font-medium text-gray-700 hover:text-blue-600 transition-colors duration-200"
+        >
+          Back
+        </button>
+      </div>
       <div className="container mx-auto max-w-5xl">
         <h1 className="text-4xl sm:text-5xl font-bold text-cyan-400 text-center mb-12 tracking-tight animate-fade-in">
           Bugs we've Found

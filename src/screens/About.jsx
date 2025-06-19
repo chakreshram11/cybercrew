@@ -49,12 +49,15 @@ function About() {
           spaceBetween={0}
           slidesPerView={1}
           loop={true}
-          autoplay={{ delay: 4000, disableOnInteraction: false, reverseDirection: true }}
+          autoplay={{
+            delay: 4000,
+            disableOnInteraction: false,
+            reverseDirection: true,
+          }}
           speed={1200}
           effect="fade"
           modules={[Autoplay, EffectFade]}
           className="w-full h-64 sm:h-96 lg:h-[36rem]"
-          reverseDirection={true}
           dir="rtl"
         >
           {[
@@ -110,54 +113,22 @@ function About() {
         </p>
 
         <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-cyan-400 mt-12 mb-4 tracking-tight">
-          What We Offer
+          Our Vision
         </h3>
-        <ul className="list-none text-left text-base sm:text-lg lg:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto space-y-4">
-          {[
-            {
-              title: "Structured Learning",
-              desc: "From the basics to advanced topics, we ensure a solid foundation in cybersecurity.",
-            },
-            {
-              title: "Specialization Tracks",
-              desc: "Dive deep into ethical hacking, penetration testing, cryptography, and more.",
-            },
-            {
-              title: "Practical Experience",
-              desc: "Hands-on labs, CTF challenges, and live simulations build real-world skills.",
-            },
-            {
-              title: "Competitions & Challenges",
-              desc: "Participate in cybersecurity challenges and industry-level competitions.",
-            },
-            {
-              title: "Internships & Career Growth",
-              desc: "Gain access to internships and career guidance from professionals.",
-            },
-          ].map((item, index) => (
-            <li
-              key={index}
-              className="flex items-start space-x-3 transition-transform duration-300 hover:translate-x-2"
-            >
-              <span className="text-cyan-400 text-xl">•</span>
-              <div>
-                <span className="text-white font-medium">{item.title}:</span>{" "}
-                {item.desc}
-              </div>
-            </li>
-          ))}
-        </ul>
+        <p className="text-base sm:text-lg lg:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
+          We envision a future where cybersecurity knowledge is accessible to all
+          – not just those in the industry. Through awareness programs,
+          hands-on workshops, and interactive sessions, we aim to build a cyber-aware
+          community that stays resilient in an ever-evolving digital landscape.
+        </p>
 
         <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-cyan-400 mt-12 mb-4 tracking-tight">
           Join Us
         </h3>
         <p className="text-base sm:text-lg lg:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
-          Cyber Crew is more than a club – it's a community of curious minds,
-          dedicated to the future of cybersecurity. Whether you’re a beginner or
-          an experienced tech enthusiast, there’s a place for you here.
-        </p>
-        <p className="text-base sm:text-lg lg:text-xl font-semibold text-cyan-300 mt-6 max-w-3xl mx-auto">
-          Let’s innovate, let’s secure, let’s grow.
+          Whether you're a student, educator, or industry professional, we welcome
+          you to be a part of our journey. Follow us for upcoming events,
+          workshops, and insightful content. Together, let’s decode the future of cybersecurity.
         </p>
       </div>
     </section>

@@ -1,5 +1,6 @@
 import React from "react";
 // import { Link } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import Webscanner from "../assets/Webscanner.png"
 import Pradeep from "../linkedin images/Pradeep.jpg"
 import Sanjay from "../linkedin images/Sanjay.jpg"
@@ -7,7 +8,10 @@ import Thabitha from "../linkedin images/Thabitha.jpg"
 import sahithya from "../linkedin images/Sahithya.jpg"
 import Gowtham from "../linkedin images/Gowtham.jpg"
 import jyothi from "../linkedin images/Jyothi.jpg"
+
 function WebScanner() {
+  const navigate = useNavigate();
+
   const features = [
     {
       image: Webscanner,
@@ -58,6 +62,14 @@ function WebScanner() {
 
   return (
     <section className="w-full bg-gray-900 text-white min-h-screen py-16 px-4 sm:px-6 lg:px-8">
+      <div className="mb-8 text-left">
+        <button 
+          onClick={() => navigate(-1)} 
+          className="border-4 border-sky-500 bg-gray-900 rounded-lg bg-white p-2 pl-3 pr-3 ml-3 text-lg font-medium text-gray-700 hover:text-blue-600 transition-colors duration-200"
+        >
+          Back
+        </button>
+      </div>
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <h1 className="text-4xl sm:text-5xl font-bold text-cyan-400 text-center mb-12 tracking-tight animate-fade-in">

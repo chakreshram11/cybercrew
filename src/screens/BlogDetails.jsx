@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 function BlogDetails() {
   const { id } = useParams();
   const [blog, setBlog] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("/Blogs.json")
@@ -35,6 +36,14 @@ function BlogDetails() {
 
   return (
     <div className="bg-gray-900 text-white min-h-screen p-8">
+      <div className="mb-8 text-left">
+        <button 
+          onClick={() => navigate(-1)} 
+          className="border-4 border-sky-500 bg-gray-900 rounded-lg bg-white p-2 pl-3 pr-3 ml-3 text-lg font-medium text-gray-700 hover:text-blue-600 transition-colors duration-200"
+        >
+          Back
+        </button>
+      </div>
       <article className="max-w-5xl mx-auto">
         <h1 className="text-5xl font-bold text-cyan-400 mb-4">{blog.title}</h1>
         <p className="text-gray-400 text-lg mb-4">

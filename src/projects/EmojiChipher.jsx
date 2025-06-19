@@ -147,7 +147,7 @@ function EmojiChipher() {
             Explore the Project
           </h2>
           <a
-            href="https://github.com/gowthamsai117/Vulnerability-Web-Scanner"
+            href="https://github.com/DanielBlesson/EMOJI_CIPHER.git"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block px-6 py-3 bg-cyan-500 text-white font-semibold rounded-md shadow-md hover:bg-cyan-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-400"

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
+import ScrollToTop from "../components/ScrollToTop";
 import Logo from "../assets/cybercrewlogo.png";
 import chairman from "../assets/chairman_sir.jpg";
 import revathi from "../assets/revathi_madam.jpeg";
@@ -51,6 +52,7 @@ function Home() {
 
   return (
     <>
+    <ScrollToTop />
      <div className="bg-gray-900 min-h-screen flex flex-col items-center justify-center py-5">
   {/* Header Section */}
   <div className="flex flex-col items-center justify-center w-full max-w-6xl px-4 text-center">

@@ -26,16 +26,16 @@ function SafeHospatialNetworking() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <h1 className="text-4xl sm:text-5xl font-bold text-cyan-400 text-center mb-12 tracking-tight animate-fade-in">
-          Secure Hospatial Networking
+          Secure Hospital Networking
         </h1>
 
         {/* Overview */}
         <div className="mb-12 text-center">
           <h2 className="text-2xl sm:text-3xl font-semibold text-white mb-4">
-            About Secure Hospatial Networking
+            About Secure Hospital Networking
           </h2>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto">
-            Secure Hospatial Networking is a cybersecurity solution designed to
+            Secure Hospital Networking is a cybersecurity solution designed to
             protect hospital networks. Developed by Cyber Crew at KIET, it offers
             robust patient data encryption, network monitoring, IoT device
             security, and access control, ensuring secure and compliant healthcare
@@ -135,7 +135,7 @@ function SafeHospatialNetworking() {
             Explore the Project
           </h2>
           <a
-            href="https://github.com/gowthamsai117/Vulnerability-Web-Scanner"
+            href="https://github.com/durgasrinivaskurra/Secure_Hospital_Network"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block px-6 py-3 bg-cyan-500 text-white font-semibold rounded-md shadow-md hover:bg-cyan-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-400"
