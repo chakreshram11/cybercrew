@@ -10,9 +10,12 @@ function BugsDetails() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    setLoading(true);
     fetch("/bug.json")
       .then((res) => {
-        if (!res.ok) throw new Error("Failed to fetch bug.json");
+        if (!res.ok) {
+          throw new Error(`Failed to fetch bug.json: ${res.status}`);
+        }
         return res.json();
       })
       .then((data) => {
@@ -31,16 +34,18 @@ function BugsDetails() {
                 : student.photo.startsWith("/")
                 ? student.photo
                 : `/${student.photo}`
-              : "/placeholder.jpg", // Handle empty photo explicitly
+              : "/placeholder.jpg",
           }));
           setBug(selectedBug);
         } else {
           setError(`Bug with ID ${id} not found`);
         }
+        setLoading(false);
       })
       .catch((err) => {
         console.error("Error fetching bug:", err);
         setError("Failed to load bug details. Please try again later.");
+        setLoading(false);
       });
   }, [id]);
 
