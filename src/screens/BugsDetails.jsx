@@ -7,6 +7,7 @@ function BugsDetails() {
   const [bug, setBug] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {

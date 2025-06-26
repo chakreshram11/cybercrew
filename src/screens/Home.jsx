@@ -17,6 +17,7 @@ function Home() {
   const [blogs, setBlogs] = useState([]);
   const [bugs, setBugs] = useState([]);
   const [projects, setProjects] = useState([]);
+  const [error, setError] = useState(null);
 
   const phrases = useMemo(() => ["Where Innovation Meets Protection"], []);
 
