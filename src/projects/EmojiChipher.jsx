@@ -1,10 +1,12 @@
 import React from "react";
 // import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import emoji1 from "../assets/emojicipher1.png"
 import emoji2 from "../assets/emojicipher2.png"
 import daniel from "../linkedin images/Daniel.jpg"
 import arshith from "../linkedin images/Arshith.jpg"
 function EmojiChipher() {
+    const navigate = useNavigate();
   const features = [
     {
       image: emoji1,
@@ -35,6 +37,13 @@ function EmojiChipher() {
 
   return (
     <section className="w-full bg-gray-900 text-white min-h-screen py-16 px-4 sm:px-6 lg:px-8">
+      <button
+          onClick={() => navigate(-1)}
+          className="inline-flex items-center justify-center bg-gradient-to-r from-gray-800 to-gray-900 rounded-full px-4 py-2 ml-3 text-2xl font-semibold text-cyan-300 hover:text-cyan-200 hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-800 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition-all duration-200 transform hover:scale-105"
+          aria-label="Go back to previous page" >
+
+          ←
+        </button>
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <h1 className="text-4xl sm:text-5xl font-bold text-cyan-400 text-center mb-12 tracking-tight animate-fade-in">
