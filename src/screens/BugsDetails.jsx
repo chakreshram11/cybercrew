@@ -12,7 +12,7 @@ function BugsDetails() {
 
   useEffect(() => {
     setLoading(true);
-    fetch("/bug.json")
+    fetch("/Bug.json")
       .then((res) => {
         if (!res.ok) {
           throw new Error(`Failed to fetch bug.json: ${res.status}`);

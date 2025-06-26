@@ -42,22 +42,19 @@ function Home() {
       .catch((err) => console.error("Error loading blogs:", err));
 
     // Fetch bug.json
-    fetch("/bug.json")
-      .then((res) => {
-        console.log("Fetching bug.json, status:", res.status, "URL:", res.url);
-        if (!res.ok) {
-          return res.text().then((text) => {
-            throw new Error(`Failed to fetch bug.json: ${res.status}, Response: ${text}`);
-          });
-        }
-        return res.json();
-      })
-      .then((data) => setBugs(data))
-      .catch((err) => {
-        console.error("Error loading bugs:", err);
-        setBugs([]); // Fallback to empty array
-        setError("Failed to load bugs.");
-      });
+    fetch("/Bug.json")
+    .then((res) => {
+      console.log("Fetching bug.json, status:", res.status, "URL:", res.url); // Line 47
+      if (!res.ok) {
+        throw new Error(`Failed to fetch bug.json: ${res.status}`); // Line 50
+      }
+      return res.json();
+    })
+    .then((data) => setBugs(data))
+    .catch((err) => {
+      console.error("Error loading bugs:", err); // Line 57
+      setError("Failed to load bugs.");
+    });
 
     fetch("/project.json")
       .then((res) => res.json())
