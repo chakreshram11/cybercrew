@@ -73,7 +73,7 @@ function BugsDetails() {
       <div className="mb-8 text-left">
         <button 
           onClick={() => navigate(-1)} 
-          className="border-4 border-sky-500 bg-gray-900 rounded-lg bg-white p-2 pl-3 pr-3 ml-3 text-lg font-medium text-gray-700 hover:text-blue-600 transition-colors duration-200"
+          className="border-4 border-sky-500 bg-gray-900 rounded-lg  p-2 pl-3 pr-3 ml-3 text-lg font-medium text-gray-700 hover:text-blue-600 transition-colors duration-200"
         >
           Back
         </button>

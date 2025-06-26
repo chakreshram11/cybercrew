@@ -5,12 +5,23 @@ function Bugs() {
   const [bugs, setBugs] = useState([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
+// Fetch bug.json
     fetch("/bug.json")
-      .then((res) => res.json())
+      .then((res) => {
+        console.log("Fetching bug.json, status:", res.status, "URL:", res.url);
+        if (!res.ok) {
+          return res.text().then((text) => {
+            throw new Error(`Failed to fetch bug.json: ${res.status}, Response: ${text}`);
+          });
+        }
+        return res.json();
+      })
       .then((data) => setBugs(data))
-      .catch((err) => console.error("Error fetching bugs:", err));
-  }, []);
+      .catch((err) => {
+        console.error("Error loading bugs:", err);
+        setBugs([]); // Fallback to empty array
+        setError("Failed to load bugs.");
+      });
 
   return (
     <section className="bg-gray-900 min-h-screen text-white py-12 px-4 sm:px-6 lg:px-8">
