@@ -109,9 +109,9 @@ function Home() {
         <div className="flex flex-wrap justify-center gap-8 sm:gap-10 mt-10 mb-10">
           {[
             { src: chairman, name: "P. Viswam\n(Chairman Sir)" },
-            { src: revathi, name: "D. Revathi\n(Kiet Principle)" },
-            { src: ramkrishna, name: "Y. Rama Krishna\n(Kiet-w Principle)" },
-            { src: dean, name: "RamKiran\n(Dean & Vice Principle)" },
+            { src: revathi, name: "D. Revathi\n(Kiet Principal)" },
+            { src: ramkrishna, name: "Y. Rama Krishna\n(Kiet-w Principal)" },
+            { src: dean, name: "RamKiran\n(Dean & Vice Principal)" },
             { src: somesh, name: "S.N.S.Somesh\n(Cyber Crew Coordinator)" },
             { src: dhanush, name: "Dhanush" },
             { src: ajay, name: "S. Ajay" },
