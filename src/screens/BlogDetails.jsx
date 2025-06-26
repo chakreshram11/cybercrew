@@ -37,11 +37,12 @@ function BlogDetails() {
   return (
     <div className="bg-gray-900 text-white min-h-screen p-8">
       <div className="mb-8 text-left">
-        <button 
-          onClick={() => navigate(-1)} 
-          className="border-4 border-sky-500 bg-gray-900 rounded-lg p-2 pl-3 pr-3 ml-3 text-lg font-medium text-gray-700 hover:text-blue-600 transition-colors duration-200"
-        >
-          Back
+        <button
+          onClick={() => navigate(-1)}
+          className="inline-flex items-center justify-center bg-gradient-to-r from-gray-800 to-gray-900 rounded-full px-4 py-2 ml-3 text-2xl font-semibold text-cyan-300 hover:text-cyan-200 hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-800 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition-all duration-200 transform hover:scale-105"
+          aria-label="Go back to previous page" >
+
+          ←
         </button>
       </div>
       <article className="max-w-5xl mx-auto">
