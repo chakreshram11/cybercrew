@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Autoplay, EffectFade } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import RoadmapStep from "../components/RoadmapStep";
 
 // Import Swiper styles
 import "swiper/css";
@@ -137,57 +138,37 @@ function About() {
         </h3>
 
         <div className="relative w-full max-w-6xl mx-auto mb-5">
-          {/* Vertical line */}
-          <div className="absolute left-1/2 top-0 h-full border-l-4 border-cyan-500 transform -translate-x-1/2 z-0" />
+  {/* Vertical line */}
+  <div className="absolute left-1/2 top-0 h-full border-l-4 border-cyan-500 transform -translate-x-1/2 z-0" />
 
-          <div className="space-y-20 relative z-10">
-            {[
-              {
-                title: "Beginner",
-                desc: "Start with networking basics, OSI model, Linux essentials, and learn what cybersecurity is all about. Explore safe browsing, phishing detection, and basic system hardening.",
-                position: "left",
-              },
-              {
-                title: "Intermediate",
-                desc: "Learn about vulnerabilities like XSS, SQL Injection, and CSRF. Start using tools like Nmap, Burp Suite, and Wireshark. Practice using CTF platforms such as TryHackMe and HackTheBox.",
-                position: "right",
-              },
-              {
-                title: "Advanced",
-                desc: "Dig into exploit development, reverse engineering, malware analysis, and buffer overflows. Explore tools like Ghidra, Metasploit, and build scripts for automation.",
-                position: "left",
-              },
-              {
-                title: "Expert",
-                desc: "Contribute to bug bounty platforms, conduct red teaming, publish research, and aim for certifications like OSCP, CEH, or CISSP. Mentor others and contribute to the community.",
-                position: "right",
-              },
-            ].map((step, index) => (
-              <div
-                key={index}
-                className={`flex flex-col md:flex-row items-center ${
-                  step.position === "left" ? "md:flex-row" : "md:flex-row-reverse"
-                }`}
-              >
-                <div className="md:w-1/2 px-6 text-right md:text-left">
-                  <div className="bg-gray-800 p-6 rounded-xl shadow-lg border border-cyan-500 hover:shadow-cyan-500/50 transition duration-300">
-                    <h4 className="text-lg sm:text-xl font-semibold text-cyan-300">
-                      {index + 1}. {step.title}
-                    </h4>
-                    <p className="text-gray-300 mt-2">{step.desc}</p>
-                  </div>
-                </div>
+  <div className="space-y-20 relative z-10">
+    {[
+      {
+        title: "Beginner",
+        desc: "Start with networking basics, OSI model, Linux essentials, and learn what cybersecurity is all about. Explore safe browsing, phishing detection, and basic system hardening.",
+        position: "left",
+      },
+      {
+        title: "Intermediate",
+        desc: "Learn about vulnerabilities like XSS, SQL Injection, and CSRF. Start using tools like Nmap, Burp Suite, and Wireshark. Practice using CTF platforms such as TryHackMe and HackTheBox.",
+        position: "right",
+      },
+      {
+        title: "Advanced",
+        desc: "Dig into exploit development, reverse engineering, malware analysis, and buffer overflows. Explore tools like Ghidra, Metasploit, and build scripts for automation.",
+        position: "left",
+      },
+      {
+        title: "Expert",
+        desc: "Contribute to bug bounty platforms, conduct red teaming, publish research, and aim for certifications like OSCP, CEH, or CISSP. Mentor others and contribute to the community.",
+        position: "right",
+      },
+    ].map((step, index) => (
+      <RoadmapStep key={index} step={step} index={index} />
+    ))}
+  </div>
+</div>
 
-                {/* Timeline dot */}
-                <div className="w-10 h-10 rounded-full bg-cyan-500 border-4 border-white z-10 mx-4 hidden md:flex items-center justify-center">
-                  <span className="text-sm font-bold text-gray-900">{index + 1}</span>
-                </div>
-
-                <div className="md:w-1/2"></div>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );
