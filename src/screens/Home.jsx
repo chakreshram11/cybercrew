@@ -83,58 +83,60 @@ function Home() {
   </div>
 </div>
 
-      <section className="w-full min-h-screen bg-gray-800 text-white flex flex-col items-center py-12 md:py-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-cyan-400 mb-6 tracking-tight">
-            About Us
-          </h2>
-          <p className="text-base sm:text-lg lg:text-xl text-gray-300 leading-7 sm:leading-8 max-w-3xl mx-auto">
-            Cyber Crew was founded by two innovative students,{" "}
-            <span className="text-white font-medium">Ajay</span> and{" "}
-            <span className="text-white font-medium">Dhanush</span>, with a vision
-            to develop and nurture cybersecurity enthusiasts within our branch. Our
-            mission is to provide a collaborative learning environment where
-            students passionate about cybersecurity can explore, research, and gain
-            hands-on experience in various security domains.
-          </p>
-          <p className="text-base sm:text-lg lg:text-xl text-gray-300 leading-7 sm:leading-8 max-w-3xl mx-auto mt-6">
-            Beyond learning, we are committed to spreading awareness about
-            cybersecurity threats, ethical hacking, and digital safety through
-            workshops, events, and awareness programs within our college. Together,
-            we aim to build a secure digital future while continuously expanding our
-            knowledge.
+      <section className="w-full min-h-screen bg-gray-800 text-white flex flex-col items-center py-12 md:py-20 lg:py-24">
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-cyan-400 mb-6 tracking-tight">
+      About Us
+    </h2>
+    <p className="text-base sm:text-lg lg:text-xl text-gray-300 leading-7 sm:leading-8 max-w-3xl mx-auto">
+      Cyber Crew was founded by two innovative students,{" "}
+      <span className="text-white font-semibold">Ajay</span> and{" "}
+      <span className="text-white font-semibold">Dhanush</span>, with a vision
+      to develop and nurture cybersecurity enthusiasts within our branch. Our
+      mission is to provide a collaborative learning environment where
+      students passionate about cybersecurity can explore, research, and gain
+      hands-on experience in various security domains.
+    </p>
+    <p className="text-base sm:text-lg lg:text-xl text-gray-300 leading-7 sm:leading-8 max-w-3xl mx-auto mt-6">
+      Beyond learning, we are committed to spreading awareness about
+      cybersecurity threats, ethical hacking, and digital safety through
+      workshops, events, and awareness programs within our college. Together,
+      we aim to build a secure digital future while continuously expanding our
+      knowledge.
+    </p>
+  </div>
+  {/* Team Images with Names */}
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:flex lg:flex-nowrap lg:justify-center gap-6 sm:gap-8 lg:gap-10 mt-12 mb-16">
+      {[
+        { src: chairman, name: "P. Viswam\n(Chairman Sir)" },
+        { src: revathi, name: "D. Revathi\n(Kiet Principal)" },
+        { src: ramkrishna, name: "Y. Rama Krishna\n(Kiet-w Principal)" },
+        { src: dean, name: "RamKiran\n(Dean & Vice Principal)" },
+        { src: somesh, name: "S.N.S.Somesh\n(Cyber Crew Coordinator)" },
+        { src: dhanush, name: "Dhanush" },
+        { src: ajay, name: "S. Ajay" },
+        { src: bhanu, name: "G. Bhanu" },
+      ].map((member, index) => (
+        <div key={index} className="flex flex-col items-center group min-w-[120px] lg:min-w-[150px]">
+          <div className="relative">
+            <img
+              src={member.src}
+              alt={`${member.name.replace(/\n/g, " ")}'s profile`}
+              className="h-24 w-24 sm:h-28 sm:w-28 md:h-32 md:w-32 lg:h-36 lg:w-36 rounded-full object-cover border-4 border-cyan-500/30 shadow-xl transition-all duration-300 group-hover:border-cyan-500 group-hover:shadow-cyan-500/50 group-hover:scale-105"
+              loading="lazy"
+              onError={(e) => (e.target.src = "/assets/fallback.jpg")}
+            />
+            <div className="absolute inset-0 rounded-full bg-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </div>
+          <p className="mt-4 text-sm sm:text-base md:text-lg font-medium text-gray-200 text-center whitespace-pre-line group-hover:text-white transition-colors duration-300">
+            {member.name}
           </p>
         </div>
-        {/* Team Images with Names */}
-        <div className="flex flex-wrap justify-center gap-8 sm:gap-10 mt-10 mb-10">
-          {[
-            { src: chairman, name: "P. Viswam\n(Chairman Sir)" },
-            { src: revathi, name: "D. Revathi\n(Kiet Principal)" },
-            { src: ramkrishna, name: "Y. Rama Krishna\n(Kiet-w Principal)" },
-            { src: dean, name: "RamKiran\n(Dean & Vice Principal)" },
-            { src: somesh, name: "S.N.S.Somesh\n(Cyber Crew Coordinator)" },
-            { src: dhanush, name: "Dhanush" },
-            { src: ajay, name: "S. Ajay" },
-            { src: bhanu, name: "G. Bhanu" },
-
-          ].map((member, index) => (
-            <div key={index} className="flex flex-col items-center">
-              <img
-                src={member.src}
-                alt={`${member.name.replace(/\n/g, " ")}'s profile`}
-                className="h-32 w-32 sm:h-36 sm:w-36 md:h-40 md:w-40 rounded-full object-cover border-2 border-cyan-400 shadow-lg transition-transform duration-300 hover:scale-110"
-                loading="lazy"
-                onError={(e) => (e.target.src = "/assets/fallback.jpg")}
-              />
-              <p
-                className="mt-6 text -base sm:text-lg md:text-xl font-medium text-white text-center whitespace-pre-line"
-              >
-                {member.name}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* Blog Section */}
       <section className="w-full min-h-screen bg-gray-900 text-white py-16 px-4 sm:px-6 lg:px-8">

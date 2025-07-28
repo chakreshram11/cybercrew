@@ -171,30 +171,30 @@ function BugsDetails() {
       </article>
 
       {selectedImage && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center z-50 animate-fade-in-fast"
-          onClick={closeImageModal}
-        >
-          <div className="relative max-w-4xl w-full mx-4">
-            <img
-              src={selectedImage}
-              alt="Enlarged view"
-              className="w-full h-auto max-h-[80vh] object-contain rounded-md"
-              onError={(e) => {
-                console.warn(`Failed to load modal image: ${selectedImage}`);
-                e.target.src = "/placeholder.jpg";
-              }}
-            />
-            <button
-              className="absolute top-2 right-2  text-white bg-gray-800 rounded-full p-2 hover:bg-gray-700 transition"
-              onClick={closeImageModal}
-              aria-label="Close image modal"
-            >
-              ✕
-            </button>
-          </div>
-        </div>
-      )}
+  <div
+    className="fixed inset-0 bg-black bg-opacity-90 flex justify-center items-center z-50 transition-opacity duration-300 animate-fade-in"
+    onClick={closeImageModal}
+  >
+    <div className="relative max-w-5xl w-full mx-4 sm:mx-6 lg:mx-8">
+      <img
+        src={selectedImage}
+        alt="Enlarged view"
+        className="w-full h-auto max-h-[85vh] object-contain rounded-lg border-2 border-gray-700 shadow-2xl transition-transform duration-300"
+        onError={(e) => {
+          console.warn(`Failed to load modal image: ${selectedImage}`);
+          e.target.src = "/placeholder.jpg";
+        }}
+      />
+      <button
+        className="absolute -top-12 -right-2 sm:-top-12 sm:-right-4 bg-gray-800 text-white rounded-full p-3 text-lg font-semibold hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition-all duration-200 hover:scale-110"
+        onClick={closeImageModal}
+        aria-label="Close image modal"
+      >
+        ✕
+      </button>
+    </div>
+  </div>
+)}
     </div>
   );
 }

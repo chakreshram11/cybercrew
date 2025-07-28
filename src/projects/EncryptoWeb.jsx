@@ -147,18 +147,26 @@ function EncryptoWeb() {
     <img
       src={member.image}
       alt={member.name}
-      className="w-32 h-32 rounded-full object-cover mb-4 border-4 border-cyan-400"
+      className="w-32 h-32 rounded-full object-cover mb-4"
       loading="lazy"
     />
     <h3 className="text-lg font-semibold text-white mb-2">{member.name}</h3>
     <a
-      href={member.linkedin}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="text-cyan-400 hover:underline"
-    >
-      LinkedIn Profile
-    </a>
+                    href={member.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-cyan-400 hover:text-cyan-300 transition-colors duration-200"
+                    aria-label={`Visit ${member.name}'s LinkedIn profile`}
+                  >
+                    <svg
+                      className="w-6 h-6"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-1.337-.027-3.063-1.867-3.063-1.867 0-2.153 1.459-2.153 2.968v5.699h-3v-11h2.879v1.526h.04c.401-.758 1.379-1.559 2.837-1.559 3.035 0 3.604 2.001 3.604 4.604v6.429z" />
+                    </svg>
+                  </a>
   </div>
 ))}
 

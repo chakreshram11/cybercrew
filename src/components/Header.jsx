@@ -22,7 +22,7 @@ function Header() {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex flex-grow justify-center">
           <ul className="flex space-x-6 md:space-x-10 text-lg md:text-xl">
-            {["ABOUT", "BLOG","BUG", "PROJECTS", "CONTACT"].map((item) => (
+            {["ABOUT", "BLOGS","BUGS", "PROJECTS", "CONTACT"].map((item) => (
               <li key={item}>
                 <Link to={`/${item.toLowerCase()}`} className="hover:text-cyan-400 font-bold font-serif">
                   {item}
@@ -58,7 +58,7 @@ function Header() {
         }`}
       >
         <ul className="flex flex-col items-center space-y-4">
-          {["About", "Blog","Bug", "Projects", "Contact"].map((item) => (
+          {["About", "Blogs","Bugs", "Projects", "Contact"].map((item) => (
             <li key={item}>
               <Link to={`/${item.toLowerCase()}`} className="hover:text-gray-300" onClick={handleMenuClose}>
                 {item}
