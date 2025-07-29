@@ -134,7 +134,7 @@ function About() {
       </div>
       <div className="bg-gray-900">
               <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-cyan-400 mt-16 mb-12 tracking-tight text-center">
-          Cybersecurity Roadmap
+          Cyber Crew Roadmap
         </h3>
 
         <div className="relative w-full max-w-6xl mx-auto mb-5">
