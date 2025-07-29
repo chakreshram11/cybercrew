@@ -150,7 +150,7 @@ function About() {
       },
       {
         title: "Intermediate",
-        desc: "Learn about vulnerabilities like XSS, SQL Injection, CSRF, and OWASP Top 10. Start using tools like Nmap, Burp Suite, and Wireshark. Practice using CTF platforms such as TryHackMe and HackTheBox.",
+        desc: "Learn about Web Architecture and Vulnerabilities like XSS, SQL Injection, CSRF, and OWASP Top 10. Start using tools like Nmap, Burp Suite, and Wireshark. Practice using CTF platforms such as TryHackMe and HackTheBox.",
         position: "right",
       },
       {
