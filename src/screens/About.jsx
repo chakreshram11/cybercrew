@@ -134,7 +134,7 @@ function About() {
       </div>
       <div className="bg-gray-900">
               <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-cyan-400 mt-16 mb-12 tracking-tight text-center">
-          Cybersecurity Roadmap
+          Cyber Crew Roadmap
         </h3>
 
         <div className="relative w-full max-w-6xl mx-auto mb-5">
@@ -145,17 +145,17 @@ function About() {
     {[
       {
         title: "Beginner",
-        desc: "Start with networking basics, OSI model, Linux essentials, and learn what cybersecurity is all about. Explore safe browsing, phishing detection, and basic system hardening.",
+        desc: "Begin with networking basics, the OSI model, Linux essentials, Python and what cybersecurity means. Add CompTIA A+, hardware basics, and OS fundamentals to get a strong understanding of IT foundations.",
         position: "left",
       },
       {
         title: "Intermediate",
-        desc: "Learn about vulnerabilities like XSS, SQL Injection, and CSRF. Start using tools like Nmap, Burp Suite, and Wireshark. Practice using CTF platforms such as TryHackMe and HackTheBox.",
+        desc: "Learn about Web Architecture and Vulnerabilities like XSS, SQL Injection, CSRF, and OWASP Top 10. Start using tools like Nmap, Burp Suite, and Wireshark. Practice using CTF platforms such as TryHackMe and HackTheBox.",
         position: "right",
       },
       {
         title: "Advanced",
-        desc: "Dig into exploit development, reverse engineering, malware analysis, and buffer overflows. Explore tools like Ghidra, Metasploit, and build scripts for automation.",
+        desc: "Dig into exploit development, reverse engineering, and buffer overflows. Explore tools like Ghidra, Metasploit, and build scripts for automation.",
         position: "left",
       },
       {
