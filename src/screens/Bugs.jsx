@@ -3,8 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 
 function Bugs() {
   const [bugs, setBugs] = useState([]);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [, setError] = useState(null);
+  const [, setLoading] = useState(true);
   const navigate = useNavigate();
 
 useEffect(() => {
