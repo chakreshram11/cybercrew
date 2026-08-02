@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import CyberBadge from "../components/CyberBadge";
 
 function Contact() {
   const navigate = useNavigate();
@@ -14,14 +15,12 @@ function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  // Handle form input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
     setErrors((prev) => ({ ...prev, [name]: "" }));
   };
 
-  // Validate form fields
   const validate = () => {
     const newErrors = {};
     if (!formData.name.trim()) newErrors.name = "Name is required";
@@ -35,7 +34,6 @@ function Contact() {
     return newErrors;
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     const validationErrors = validate();
@@ -61,221 +59,187 @@ function Contact() {
       }
     } catch (error) {
       console.error("Submission error:", error);
-      setErrors({ form: "Failed to send message. Please try again." });
+      setErrors({ form: "Transmission failed. Check parameters and try again." });
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <section className="bg-gray-900 text-white min-h-screen py-12 px-4 sm:px-6 lg:px-8">
-       <div className="mb-8 text-left">
-        <button
-          onClick={() => navigate(-1)}
-          className="inline-flex items-center justify-center bg-gradient-to-r from-gray-800 to-gray-900 rounded-full px-4 py-2 ml-3 text-2xl font-semibold text-cyan-300 hover:text-cyan-200 hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-800 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition-all duration-200 transform hover:scale-105"
-          aria-label="Go back to previous page" >
+    <section className="bg-cyber-dark text-white min-h-screen py-12 px-4 sm:px-6 lg:px-8 bg-cyber-grid font-mono">
+      <div className="max-w-6xl mx-auto">
+        <div className="mb-6 text-left">
+          <button
+            onClick={() => navigate(-1)}
+            className="flex items-center gap-2 px-4 py-2 bg-cyber-slate border border-cyan-500/40 text-cyan-400 font-mono font-bold rounded shadow-[0_0_10px_rgba(0,243,255,0.2)] hover:bg-cyan-950 hover:border-cyan-400 transition-all text-xs"
+            aria-label="Go back"
+          >
+            ← BACK
+          </button>
+        </div>
 
-          ←
-        </button>
-      </div>
-      <div className="max-w-5xl mx-auto">
-        <h1 className="text-4xl sm:text-5xl font-bold text-cyan-400 text-center mb-12 tracking-tight animate-fade-in">
-          Contact Us
-        </h1>
+        <div className="text-center mb-10">
+          <CyberBadge text="ENCRYPTED TRANSMISSION CHANNEL" type="cyan" className="mb-2" />
+          <h1 className="text-4xl sm:text-5xl font-mono font-bold text-cyan-400 text-glow-cyan">
+            INITIATE CONTACT
+          </h1>
+          <p className="text-gray-400 font-mono text-sm max-w-xl mx-auto mt-2">
+            Reach out to Cyber Crew regarding vulnerability disclosures, security partnerships, workshops, or membership inquiries.
+          </p>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Contact Form */}
-          <div className="bg-gray-800 rounded-xl p-6 sm:p-8 shadow-lg">
-            <h2 className="text-2xl sm:text-3xl font-semibold text-white mb-6">
-              Send Us a Message
+          <div className="cyber-card p-6 sm:p-8 rounded-xl border border-cyan-500/30">
+            <h2 className="text-xl font-mono font-bold text-white mb-6 flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping"></span>
+              SECURE MESSAGE TRANSMITTER
             </h2>
+
             {success && (
-              <p className="text-green-400 mb-4 animate-fade-in">
-                Message sent successfully! We’ll get back to you soon.
-              </p>
+              <div className="p-3 bg-emerald-950 border border-emerald-400 text-emerald-300 text-xs rounded mb-4">
+                ✔ TRANSMISSION SUCCESSFUL: Cyber Crew received your message.
+              </div>
             )}
             {errors.form && (
-              <p className="text-red-400 mb-4">{errors.form}</p>
+              <div className="p-3 bg-rose-950 border border-rose-500 text-rose-300 text-xs rounded mb-4">
+                ✖ ERROR: {errors.form}
+              </div>
             )}
-            <form onSubmit={handleSubmit} noValidate>
-              <div className="mb-4">
-                <label
-                  htmlFor="name"
-                  className="block text-gray-300 mb-2 text-sm sm:text-base"
-                >
-                  Name
+
+            <form onSubmit={handleSubmit} noValidate className="space-y-4">
+              <div>
+                <label className="block text-xs font-mono text-cyan-400 uppercase mb-1">
+                  Full Name / Handle *
                 </label>
                 <input
                   type="text"
-                  id="name"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className={`w-full p-3 rounded-md bg-gray-700 text-white border ${
-                    errors.name ? "border-red-500" : "border-gray-600"
-                  } focus:outline-none focus:ring-2 focus:ring-cyan-400`}
-                  placeholder="Your Name"
-                  aria-label="Your Name"
+                  placeholder="e.g. Alex Mercer"
+                  className={`w-full p-3 rounded bg-gray-900 text-white font-mono text-sm border ${
+                    errors.name ? "border-rose-500" : "border-gray-700"
+                  } focus:outline-none focus:border-cyan-400`}
                   disabled={isSubmitting}
                 />
-                {errors.name && (
-                  <p className="text-red-400 text-sm mt-1">{errors.name}</p>
-                )}
+                {errors.name && <p className="text-rose-400 text-xs mt-1">{errors.name}</p>}
               </div>
-              <div className="mb-4">
-                <label
-                  htmlFor="email"
-                  className="block text-gray-300 mb-2 text-sm sm:text-base"
-                >
-                  Email
+
+              <div>
+                <label className="block text-xs font-mono text-cyan-400 uppercase mb-1">
+                  Secure Email Address *
                 </label>
                 <input
                   type="email"
-                  id="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className={`w-full p-3 rounded-md bg-gray-700 text-white border ${
-                    errors.email ? "border-red-500" : "border-gray-600"
-                  } focus:outline-none focus:ring-2 focus:ring-cyan-400`}
-                  placeholder="your.email@example.com"
-                  aria-label="Your Email"
+                  placeholder="alex@cybersec.org"
+                  className={`w-full p-3 rounded bg-gray-900 text-white font-mono text-sm border ${
+                    errors.email ? "border-rose-500" : "border-gray-700"
+                  } focus:outline-none focus:border-cyan-400`}
                   disabled={isSubmitting}
                 />
-                {errors.email && (
-                  <p className="text-red-400 text-sm mt-1">{errors.email}</p>
-                )}
+                {errors.email && <p className="text-rose-400 text-xs mt-1">{errors.email}</p>}
               </div>
-              <div className="mb-4">
-                <label
-                  htmlFor="subject"
-                  className="block text-gray-300 mb-2 text-sm sm:text-base"
-                >
-                  Subject
+
+              <div>
+                <label className="block text-xs font-mono text-cyan-400 uppercase mb-1">
+                  Transmission Subject *
                 </label>
                 <input
                   type="text"
-                  id="subject"
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  className={`w-full p-3 rounded-md bg-gray-700 text-white border ${
-                    errors.subject ? "border-red-500" : "border-gray-600"
-                  } focus:outline-none focus:ring-2 focus:ring-cyan-400`}
-                  placeholder="Subject of your message"
-                  aria-label="Subject"
+                  placeholder="e.g., Vulnerability Disclosure / Partnership"
+                  className={`w-full p-3 rounded bg-gray-900 text-white font-mono text-sm border ${
+                    errors.subject ? "border-rose-500" : "border-gray-700"
+                  } focus:outline-none focus:border-cyan-400`}
                   disabled={isSubmitting}
                 />
-                {errors.subject && (
-                  <p className="text-red-400 text-sm mt-1">{errors.subject}</p>
-                )}
+                {errors.subject && <p className="text-rose-400 text-xs mt-1">{errors.subject}</p>}
               </div>
-              <div className="mb-6">
-                <label
-                  htmlFor="message"
-                  className="block text-gray-300 mb-2 text-sm sm:text-base"
-                >
-                  Message
+
+              <div>
+                <label className="block text-xs font-mono text-cyan-400 uppercase mb-1">
+                  Encrypted Payload / Message *
                 </label>
                 <textarea
-                  id="message"
                   name="message"
+                  rows="4"
                   value={formData.message}
                   onChange={handleChange}
-                  rows="5"
-                  className={`w-full p-3 rounded-md bg-gray-700 text-white border ${
-                    errors.message ? "border-red-500" : "border-gray-600"
-                  } focus:outline-none focus:ring-2 focus:ring-cyan-400 resize-y`}
-                  placeholder="Your message here..."
-                  aria-label="Your Message"
+                  placeholder="Detail your inquiry or security report..."
+                  className={`w-full p-3 rounded bg-gray-900 text-white font-mono text-sm border ${
+                    errors.message ? "border-rose-500" : "border-gray-700"
+                  } focus:outline-none focus:border-cyan-400`}
                   disabled={isSubmitting}
                 />
-                {errors.message && (
-                  <p className="text-red-400 text-sm mt-1">{errors.message}</p>
-                )}
+                {errors.message && <p className="text-rose-400 text-xs mt-1">{errors.message}</p>}
               </div>
+
               <button
                 type="submit"
-                className={`w-full py-3 rounded-md bg-cyan-500 text-white font-semibold hover:bg-cyan-400 transition-colors duration-200 ${
-                  isSubmitting ? "opacity-50 cursor-not-allowed" : ""
-                }`}
                 disabled={isSubmitting}
-                aria-label="Send Message"
+                className="w-full py-3 rounded bg-cyan-500 text-gray-950 font-mono font-bold uppercase tracking-wider text-sm hover:bg-cyan-400 shadow-[0_0_15px_rgba(0,243,255,0.4)] transition-all"
               >
-                {isSubmitting ? "Sending..." : "Send Message"}
+                {isSubmitting ? "TRANSMITTING ENCRYPTED DATA..." : "TRANSMIT MESSAGE →"}
               </button>
             </form>
           </div>
 
-          {/* Contact Info */}
-          <div className="bg-gray-800 rounded-xl p-6 sm:p-8 shadow-lg">
-            <h2 className="text-2xl sm:text-3xl font-semibold text-white mb-6">
-              Get in Touch
-            </h2>
-            <p className="text-gray-300 mb-6 leading-relaxed">
-              Have questions or want to collaborate with Cyber Crew? Reach out to
-              us via email or connect on social media.
-            </p>
-            <div className="space-y-4">
-              <div className="flex items-center">
-                <svg
-                  className="w-6 h-6 text-cyan-400 mr-3"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  />
-                </svg>
-                <a
-                  href="mailto:cyberkiet24@gmail.com"
-                  className="text-gray-300 hover:text-cyan-400 transition-colors duration-200"
-                  aria-label="Email Cyber Crew"
-                >
-                  cyberkiet24@gmail.com
-                </a>
-              </div>
-              <div className="flex items-center">
-                <svg
-                  className="w-6 h-6 text-cyan-400 mr-3"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-1.337-.027-3.063-1.867-3.063-1.867 0-2.153 1.459-2.153 2.968v5.699h-3v-11h2.879v1.526h.04c.401-.758 1.379-1.559 2.837-1.559 3.035 0 3.604 2.001 3.604 4.604v6.429z" />
-                </svg>
-                <a
-                  href="https://linkedin.com/company/kiet-cybercrew"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-cyan-400 transition-colors duration-200"
-                  aria-label="Visit Cyber Crew's LinkedIn"
-                >
-                  Cyber Crew LinkedIn
-                </a>
+          {/* Contact Info & Location Map */}
+          <div className="cyber-card p-6 sm:p-8 rounded-xl border border-cyan-500/30 flex flex-col justify-between">
+            <div>
+              <h2 className="text-xl font-mono font-bold text-white mb-4">
+                HEADQUARTERS & CONTACT
+              </h2>
+              <p className="text-gray-300 text-xs leading-relaxed mb-6">
+                Cyber Crew operates out of Kakinada Institute of Engineering and Technology (KIET). Connect via official mail or LinkedIn.
+              </p>
+
+              <div className="space-y-3 text-xs">
+                <div className="flex items-center gap-3 p-3 bg-gray-900 rounded border border-gray-800">
+                  <span className="text-cyan-400">✉ EMAIL:</span>
+                  <a href="mailto:cyberkiet24@gmail.com" className="text-gray-200 hover:text-cyan-300">
+                    cyberkiet24@gmail.com
+                  </a>
+                </div>
+
+                <div className="flex items-center gap-3 p-3 bg-gray-900 rounded border border-gray-800">
+                  <span className="text-cyan-400">🔗 LINKEDIN:</span>
+                  <a
+                    href="https://linkedin.com/company/kiet-cybercrew"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-200 hover:text-cyan-300"
+                  >
+                    Cyber Crew KIET
+                  </a>
+                </div>
               </div>
             </div>
-            {/* KIET Korangi Location */}
-            <div className="mt-8">
-              <h3 className="text-xl font-semibold text-white mb-4">Our Location</h3>
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1431.527877660336!2d82.23912161786397!3d16.81359909426223!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a38205e52dbce3d%3A0x794aa1538de4100f!2sKiet%20College!5e0!3m2!1sen!2sin!4v1714842017451!5m2!1sen!2sin"
-                width="100%"
-                height="200"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                title="KIET Korangi Location"
-                className="rounded-md"
-              ></iframe>
-              <p className="text-gray-300 mt-4 text-sm sm:text-base">
-                Kakinada Institute of Engineering and Technology, KKD-Yanam Road,
-                Korangi, Tallarevu Mandal, East Godavari District, Andhra Pradesh, PIN-533461
+
+            {/* Embedded Google Map */}
+            <div className="mt-6 pt-4 border-t border-gray-800">
+              <h3 className="text-xs font-mono font-bold text-cyan-400 mb-2 uppercase">
+                GEOGRAPHIC COORDINATES
+              </h3>
+              <div className="rounded overflow-hidden border border-cyan-500/30">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1431.527877660336!2d82.23912161786397!3d16.81359909426223!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a38205e52dbce3d%3A0x794aa1538de4100f!2sKiet%20College!5e0!3m2!1sen!2sin!4v1714842017451!5m2!1sen!2sin"
+                  width="100%"
+                  height="160"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  title="KIET Korangi Location"
+                ></iframe>
+              </div>
+              <p className="text-[11px] text-gray-400 mt-2">
+                KIET Campus, KKD-Yanam Road, Korangi, East Godavari, AP - 533461
               </p>
             </div>
           </div>

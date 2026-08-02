@@ -1,5 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import CyberCard from "../components/CyberCard";
+import CyberBadge from "../components/CyberBadge";
+
 import net1 from "../assets/deepnet1.jpg";
 import net2 from "../assets/deepnet2.jpg";
 import daniel from "../linkedin images/Daniel.jpg";
@@ -7,152 +10,109 @@ import arshith from "../linkedin images/Arshith.jpg";
 import sri from "../linkedin images/sri karthik.jpg";
 
 function DeepNetGaurd() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+
   const features = [
     {
       image: net1,
-      title: "Real-Time Threat Detection",
+      title: "Real-Time AI Intrusion Detection",
       description:
-        "Instantly identify network intrusions using deep learning models, ensuring rapid response to cyber threats with minimal latency.",
+        "Instantly identifies network intrusions using deep neural network classification, ensuring rapid response to anomalous traffic with minimal latency.",
     },
     {
       image: net2,
-      title: "Deep Learning Dashboard",
+      title: "Threat Analytics Dashboard",
       description:
-        "Visualize network activity and threat patterns through an intuitive dashboard, powered by advanced analytics for proactive monitoring.",
+        "Visualizes network activity, packet inspection streams, and attack classification patterns through an intuitive real-time monitoring console.",
     },
   ];
 
   const team = [
-    {
-      name: "Daniel",
-      image: daniel,
-      linkedin:
-        "https://www.linkedin.com/in/daniel-blesson-korukonda-0ba6a8246",
-    },
-    {
-      name: "Arshith",
-      image: arshith,
-      linkedin: "https://www.linkedin.com/in/dhuba-arshith-3902a6259/",
-    },
-    {
-      name: "Sri Karthik",
-      image: sri,
-      linkedin: "https://www.linkedin.com/in/srikarthikpampana/",
-    },
+    { name: "Daniel", image: daniel, linkedin: "https://www.linkedin.com/in/daniel-blesson-korukonda-0ba6a8246" },
+    { name: "Arshith", image: arshith, linkedin: "https://www.linkedin.com/in/dhuba-arshith-3902a6259/" },
+    { name: "Sri Karthik", image: sri, linkedin: "https://www.linkedin.com/in/srikarthikpampana/" },
   ];
 
   return (
-    <section className="w-full bg-gray-900 text-white min-h-screen py-16 px-4 sm:px-6 lg:px-8">
-      <button
-          onClick={() => navigate(-1)}
-          className="inline-flex items-center justify-center bg-gradient-to-r from-gray-800 to-gray-900 rounded-full px-4 py-2 ml-3 text-2xl font-semibold text-cyan-300 hover:text-cyan-200 hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-800 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition-all duration-200 transform hover:scale-105"
-          aria-label="Go back to previous page" >
+    <section className="w-full bg-cyber-dark text-white min-h-screen py-12 px-4 sm:px-6 lg:px-8 bg-cyber-grid font-mono">
+      <div className="max-w-6xl mx-auto">
+        <div className="mb-6 text-left">
+          <button
+            onClick={() => navigate(-1)}
+            className="flex items-center gap-2 px-4 py-2 bg-cyber-slate border border-cyan-500/40 text-cyan-400 font-mono font-bold rounded shadow-[0_0_10px_rgba(0,243,255,0.2)] hover:bg-cyan-950 hover:border-cyan-400 transition-all text-xs"
+            aria-label="Go back"
+          >
+            ← BACK
+          </button>
+        </div>
 
-          ←
-        </button>
-      <div className="max-w-7xl mx-auto">
-        {/* Title */}
-        <h1 className="text-4xl sm:text-5xl font-bold text-cyan-400 text-center mb-12 tracking-tight">
-          DeepNet Guardian
-        </h1>
-
-        {/* Overview */}
-        <div className="mb-12 text-center">
-          <h2 className="text-2xl sm:text-3xl font-semibold text-white mb-4">
-            About DeepNet Guardian
-          </h2>
-          <p className="text-gray-300 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto">
-            The DeepNet Guardian Framework is a real-time Intrusion Detection
-            System (IDS) developed by Cyber Crew at KIET. Utilizing deep learning
-            models, it detects and mitigates cyber threats with high accuracy,
-            classifying network-based attacks to ensure robust network security
-            and operational efficiency.
+        {/* Header */}
+        <div className="text-center mb-12">
+          <CyberBadge text="DEEP LEARNING // IDS FIREWALL" type="red" className="mb-3" />
+          <h1 className="text-4xl sm:text-5xl font-mono font-bold text-cyan-400 text-glow-cyan">
+            DEEPNET GUARDIAN
+          </h1>
+          <p className="text-gray-300 font-mono text-sm max-w-3xl mx-auto mt-4 leading-relaxed bg-gray-900/80 p-5 rounded border border-cyan-500/30">
+            The DeepNet Guardian Framework is a real-time Intrusion Detection System (IDS) developed by Cyber Crew at KIET. Utilizing deep learning models, it classifies network-based APTs and DDoS attacks to protect enterprise infrastructure.
           </p>
         </div>
 
-        {/* Features */}
+        {/* Features Section */}
         <div className="mb-12">
-          <h2 className="text-2xl sm:text-3xl font-semibold text-white text-center mb-8">
-            Key Features
+          <h2 className="text-xl font-mono font-bold text-cyan-400 uppercase tracking-wider text-center mb-6">
+            INTRUSION DETECTION SYSTEM MODULES
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {features.map((feature, index) => (
-              <div
-                key={index}
-                className="bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col items-center transition-all duration-300 hover:shadow-xl"
-              >
-                <img
-                  src={feature.image}
-                  alt={feature.title}
-                  className="w-full h-48 rounded-md object-cover mb-4 transition-transform duration-300 hover:scale-105"
-                  loading="lazy"
-                />
-                <h3 className="text-xl font-semibold text-white mb-2 text-center">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-300 text-base text-center leading-relaxed">
+              <CyberCard key={index} title={feature.title} badgeText="ACTIVE ENGINE" badgeColor="red" image={feature.image}>
+                <p className="text-gray-300 font-mono text-xs leading-relaxed">
                   {feature.description}
                 </p>
-              </div>
+              </CyberCard>
             ))}
           </div>
         </div>
 
-        {/* Team */}
-        <div className="bg-gray-800 rounded-xl p-6 sm:p-8 shadow-lg mb-12">
-          <h2 className="text-2xl sm:text-3xl font-semibold text-white text-center mb-8">
-            Meet the Team
+        {/* Team Section */}
+        <div className="cyber-card p-6 sm:p-8 rounded-xl border border-cyan-500/30 mb-12">
+          <h2 className="text-xl font-mono font-bold text-white text-center mb-8 uppercase tracking-wider">
+            RESEARCH & DEVELOPMENT TEAM
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl mx-auto">
             {team.map((member) => (
-              <div
-                key={member.name}
-                className="flex flex-col items-center text-center"
-              >
+              <div key={member.name} className="flex flex-col items-center text-center group">
                 <img
                   src={member.image}
                   alt={member.name}
-                  className="w-32 h-32 rounded-full object-cover shadow-md mb-4"
+                  className="w-24 h-24 rounded-full object-cover border-2 border-cyan-500/40 shadow-[0_0_15px_rgba(0,243,255,0.2)] mb-3 group-hover:scale-105 transition-transform"
                 />
-                <h3 className="text-xl font-medium text-white mb-2">
+                <h3 className="text-xs font-mono font-bold text-white mb-1 group-hover:text-cyan-300">
                   {member.name}
                 </h3>
                 <a
                   href={member.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-cyan-400 hover:text-cyan-300 transition-colors duration-200"
-                  aria-label={`${member.name} LinkedIn`}
+                  className="text-[11px] font-mono text-cyan-400 hover:text-cyan-300"
                 >
-                  <svg
-                    className="w-6 h-6"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M19 0h-14C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zm-9 19H7V9h3v10zm-1.5-11.3c-.97 0-1.75-.78-1.75-1.75S7.53 4.2 8.5 4.2s1.75.78 1.75 1.75S9.47 7.7 8.5 7.7zM20 19h-3v-5.6c0-1.34-.03-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.97V19h-3V9h2.89v1.37h.04c.4-.76 1.37-1.56 2.83-1.56 3.03 0 3.59 1.99 3.59 4.58V19z" />
-                  </svg>
+                  [LINKEDIN]
                 </a>
               </div>
             ))}
           </div>
         </div>
-        {/* Project GitHub Link */}
-         <div className="text-center">
-           <h2 className="text-2xl sm:text-3xl font-semibold text-white mb-4">
-             Explore the Project
-           </h2>
-           <a
-             href="https://github.com/gowthamsai117/Vulnerability-Web-Scanner"
-             target="_blank"
-             rel="noopener noreferrer"
-             className="inline-block px-6 py-3 bg-cyan-500 text-white font-semibold rounded-md shadow-md hover:bg-cyan-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-400"
-             aria-label="Visit WebScanner's GitHub repository"
-           >
-             View on GitHub
-           </a>
-         </div> 
+
+        {/* GitHub Link */}
+        <div className="text-center">
+          <a
+            href="https://github.com/gowthamsai117/Vulnerability-Web-Scanner"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block px-8 py-3 bg-cyan-500 hover:bg-cyan-400 text-gray-950 font-mono font-bold text-sm uppercase tracking-wider rounded shadow-[0_0_20px_rgba(0,243,255,0.4)] transition-all"
+          >
+            EXPLORE ON GITHUB →
+          </a>
+        </div>
       </div>
     </section>
   );

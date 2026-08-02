@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import CyberCard from "../components/CyberCard";
+import CyberBadge from "../components/CyberBadge";
 
 function Blog() {
   const [blogs, setBlogs] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("/Blogs.json")
@@ -11,67 +15,72 @@ function Blog() {
       .catch((err) => console.error("Error fetching blogs:", err));
   }, []);
 
+  const filteredBlogs = blogs.filter(
+    (b) =>
+      b.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      b.description.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
-    <section className="bg-gray-900 min-h-screen text-white py-12 px-4 sm:px-6 lg:px-8">
-      <div className="container mx-auto max-w-5xl">
-        <h1 className="text-4xl sm:text-5xl font-bold text-cyan-400 text-center mb-12 tracking-tight animate-fade-in">
-          All Blogs
-        </h1>
+    <section className="bg-cyber-dark min-h-screen text-white py-12 px-4 sm:px-6 lg:px-8 bg-cyber-grid">
+      <div className="max-w-6xl mx-auto">
+        <div className="mb-6 text-left">
+          <button
+            onClick={() => navigate(-1)}
+            className="flex items-center gap-2 px-4 py-2 bg-cyber-slate border border-cyan-500/40 text-cyan-400 font-mono font-bold rounded shadow-[0_0_10px_rgba(0,243,255,0.2)] hover:bg-cyan-950 hover:border-cyan-400 transition-all text-xs"
+            aria-label="Go back"
+          >
+            ← BACK
+          </button>
+        </div>
+
+        <div className="text-center mb-10">
+          <CyberBadge text="RESEARCH & ADVISORIES" type="cyan" className="mb-2" />
+          <h1 className="text-4xl sm:text-5xl font-mono font-bold text-cyan-400 text-glow-cyan">
+            CYBER CREW BLOGS
+          </h1>
+          <p className="text-gray-400 font-mono text-sm max-w-xl mx-auto mt-2">
+            In-depth cybersecurity tutorials, exploit breakdowns, network safety guides, and club awareness updates.
+          </p>
+        </div>
+
+        {/* Search Bar */}
+        <div className="max-w-xl mx-auto mb-10">
+          <div className="relative">
+            <input
+              type="text"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              placeholder="Search blogs by topic or keyword..."
+              className="w-full p-3.5 pl-10 rounded bg-cyber-slate border border-cyan-500/40 text-white font-mono text-sm focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400"
+            />
+            <span className="absolute left-3.5 top-3.5 text-cyan-400 font-mono text-sm">🔍</span>
+          </div>
+        </div>
+
         {blogs.length === 0 ? (
-          <div className="flex justify-center items-center h-64">
-            <p className="text-gray-300 text-lg font-medium animate-pulse">
-              Loading blogs...
-            </p>
+          <div className="flex justify-center items-center h-64 font-mono text-cyan-400 animate-pulse">
+            LOADING RESEARCH BLOGS...
+          </div>
+        ) : filteredBlogs.length === 0 ? (
+          <div className="text-center py-12 font-mono text-gray-400">
+            No research blogs found matching your query.
           </div>
         ) : (
-          <div className="space-y-10">
-            {blogs.map((blog) => (
-              <Link
-                to={`/blog/${blog.id}`}
-                key={blog.id || blog.title}
-                className="block group"
-                aria-label={`Read more about ${blog.title}`}
-              >
-                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
-                  {blog.images?.[0] && (
-                    <div className="w-full sm:w-48 flex-shrink-0">
-                      <div className="relative w-full h-48 sm:h-36 rounded-lg overflow-hidden">
-                        <img
-                          src={blog.images[0]}
-                          alt={`${blog.title} preview`}
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                          loading="lazy"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-300"></div>
-                      </div>
-                    </div>
-                  )}
-                  <div className="flex-1">
-                    <h3 className="text-xl sm:text-2xl font-semibold text-cyan-400 mb-2 group-hover:text-cyan-300 transition-colors duration-200">
-                      {blog.title}
-                    </h3>
-                    <p className="text-gray-300 text-base sm:text-lg leading-relaxed line-clamp-3">
-                      {blog.description}
-                    </p>
-                    <span className="inline-flex items-center mt-3 text-cyan-400 text-sm sm:text-base font-medium group-hover:text-cyan-300 transition-colors duration-200">
-                      Read More
-                      <svg
-                        className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-200"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M9 5l7 7-7 7"
-                        />
-                      </svg>
-                    </span>
-                  </div>
-                </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredBlogs.map((blog) => (
+              <Link to={`/blog/${blog.id}`} key={blog.id || blog.title}>
+                <CyberCard
+                  title={blog.title}
+                  subtitle="ARTICLE // READ"
+                  badgeText="PUBLISHED"
+                  badgeColor="green"
+                  image={blog.images?.[0]}
+                >
+                  <p className="text-gray-300 font-mono text-xs line-clamp-3 leading-relaxed">
+                    {blog.description}
+                  </p>
+                </CyberCard>
               </Link>
             ))}
           </div>

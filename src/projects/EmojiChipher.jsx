@@ -1,168 +1,114 @@
 import React from "react";
-// import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import emoji1 from "../assets/emojicipher1.png"
-import emoji2 from "../assets/emojicipher2.png"
-import daniel from "../linkedin images/Daniel.jpg"
-import arshith from "../linkedin images/Arshith.jpg"
+import CyberCard from "../components/CyberCard";
+import CyberBadge from "../components/CyberBadge";
+
+import emoji1 from "../assets/emojicipher1.png";
+import emoji2 from "../assets/emojicipher2.png";
+import daniel from "../linkedin images/Daniel.jpg";
+import arshith from "../linkedin images/Arshith.jpg";
+
 function EmojiChipher() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+
   const features = [
     {
       image: emoji1,
-      title: "Emoji-Based Cipher",
+      title: "Emoji-Based Cipher System",
       description:
-        "Encrypt and decrypt messages using a unique emoji-based cipher system, combining visual creativity with robust security for fun and secure communication.",
+        "Encrypt and decrypt messages using a unique emoji-based cipher mapping system, combining visual creativity with cryptographic security.",
     },
     {
       image: emoji2,
-      title: "Secure Messaging",
+      title: "Secure Emoji Messaging",
       description:
-        "Send encrypted messages with emoji patterns, ensuring privacy and adding a playful twist to secure communication across platforms.",
+        "Send encrypted payloads formatted as playful emoji patterns, maintaining strict data privacy across multi-platform communication channels.",
     },
   ];
 
   const team = [
-    {
-      name: "Daniel",
-      image: daniel,
-      linkedin: "https://www.linkedin.com/in/daniel-blesson-korukonda-0ba6a8246"
-    },
-    {
-      name: "Arshith",
-      image: arshith,
-      linkedin: "https://www.linkedin.com/in/dhuba-arshith-3902a6259/"
-    }
+    { name: "Daniel", image: daniel, linkedin: "https://www.linkedin.com/in/daniel-blesson-korukonda-0ba6a8246" },
+    { name: "Arshith", image: arshith, linkedin: "https://www.linkedin.com/in/dhuba-arshith-3902a6259/" },
   ];
 
   return (
-    <section className="w-full bg-gray-900 text-white min-h-screen py-16 px-4 sm:px-6 lg:px-8">
-      <button
-          onClick={() => navigate(-1)}
-          className="inline-flex items-center justify-center bg-gradient-to-r from-gray-800 to-gray-900 rounded-full px-4 py-2 ml-3 text-2xl font-semibold text-cyan-300 hover:text-cyan-200 hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-800 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition-all duration-200 transform hover:scale-105"
-          aria-label="Go back to previous page" >
+    <section className="w-full bg-cyber-dark text-white min-h-screen py-12 px-4 sm:px-6 lg:px-8 bg-cyber-grid font-mono">
+      <div className="max-w-6xl mx-auto">
+        <div className="mb-6 text-left">
+          <button
+            onClick={() => navigate(-1)}
+            className="flex items-center gap-2 px-4 py-2 bg-cyber-slate border border-cyan-500/40 text-cyan-400 font-mono font-bold rounded shadow-[0_0_10px_rgba(0,243,255,0.2)] hover:bg-cyan-950 hover:border-cyan-400 transition-all text-xs"
+            aria-label="Go back"
+          >
+            ← BACK
+          </button>
+        </div>
 
-          ←
-        </button>
-      <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <h1 className="text-4xl sm:text-5xl font-bold text-cyan-400 text-center mb-12 tracking-tight animate-fade-in">
-          EmojiChipher
-        </h1>
-
-        {/* Overview */}
-        <div className="mb-12 text-center">
-          <h2 className="text-2xl sm:text-3xl font-semibold text-white mb-4">
-            About EmojiChipher
-          </h2>
-          <p className="text-gray-300 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto">
-            EmojiChipher is an innovative cybersecurity tool that transforms
-            encryption with emoji-based ciphers. Developed by Cyber Crew at KIET,
-            it offers secure messaging, pattern generation, and cipher analysis,
-            blending creativity with cutting-edge security to make encryption
-            accessible and engaging.
+        <div className="text-center mb-12">
+          <CyberBadge text="CIPHER & STEGANOGRAPHY" type="purple" className="mb-3" />
+          <h1 className="text-4xl sm:text-5xl font-mono font-bold text-cyan-400 text-glow-cyan">
+            EMOJI CIPHER
+          </h1>
+          <p className="text-gray-300 font-mono text-sm max-w-3xl mx-auto mt-4 leading-relaxed bg-gray-900/80 p-5 rounded border border-cyan-500/30">
+            EmojiCipher is an innovative cryptographic tool that transforms standard text encryption into emoji-based ciphers, blending visual creativity with data privacy.
           </p>
         </div>
 
         {/* Features Section */}
         <div className="mb-12">
-          <h2 className="text-2xl sm:text-3xl font-semibold text-white text-center mb-8">
-            Key Features
+          <h2 className="text-xl font-mono font-bold text-cyan-400 uppercase tracking-wider text-center mb-6">
+            CIPHER CAPABILITIES
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {features.map((feature, index) => (
-              <div
-                key={index}
-                className="bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col items-center transition-all duration-300 hover:shadow-xl"
-              >
-                <img
-                  src={feature.image}
-                  alt={`${feature.title} preview`}
-                  className="w-full h-48 rounded-md object-cover mb-4 transition-transform duration-300 hover:scale-105"
-                  loading="lazy"
-                />
-                <h3 className="text-xl font-semibold text-white mb-2 text-center">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-300 text-base text-center leading-relaxed">
+              <CyberCard key={index} title={feature.title} badgeText="ACTIVE MODULE" badgeColor="purple" image={feature.image}>
+                <p className="text-gray-300 font-mono text-xs leading-relaxed">
                   {feature.description}
                 </p>
-              </div>
+              </CyberCard>
             ))}
           </div>
         </div>
 
         {/* Team Section */}
-        <div className="bg-gray-800 rounded-xl p-6 sm:p-8 shadow-lg mb-12">
-          <h2 className="text-2xl sm:text-3xl font-semibold text-white text-center mb-8">
-            Meet the Team
+        <div className="cyber-card p-6 sm:p-8 rounded-xl border border-cyan-500/30 mb-12">
+          <h2 className="text-xl font-mono font-bold text-white text-center mb-8 uppercase tracking-wider">
+            PROJECT RESEARCH TEAM
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-md mx-auto">
             {team.map((member) => (
-              <div
-                key={member.name}
-                className="flex flex-col items-center text-center"
-              >
+              <div key={member.name} className="flex flex-col items-center text-center group">
                 <img
                   src={member.image}
-                  alt={`${member.name}, WebScanner founder`}
-                  className="w-32 h-32 rounded-full object-cover shadow-md mb-4"
+                  alt={member.name}
+                  className="w-24 h-24 rounded-full object-cover border-2 border-cyan-500/40 shadow-[0_0_15px_rgba(0,243,255,0.2)] mb-3 group-hover:scale-105 transition-transform"
                 />
-                <h3 className="text-xl font-medium text-white mb-2">
+                <h3 className="text-xs font-mono font-bold text-white mb-1 group-hover:text-cyan-300">
                   {member.name}
                 </h3>
-                <div className="flex gap-4">
-                  <a
-                    href={member.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-cyan-400 hover:text-cyan-300 transition-colors duration-200"
-                    aria-label={`Visit ${member.name}'s LinkedIn profile`}
-                  >
-                    <svg
-                      className="w-6 h-6"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-1.337-.027-3.063-1.867-3.063-1.867 0-2.153 1.459-2.153 2.968v5.699h-3v-11h2.879v1.526h.04c.401-.758 1.379-1.559 2.837-1.559 3.035 0 3.604 2.001 3.604 4.604v6.429z" />
-                    </svg>
-                  </a>
-                  {/* <a
-                    href={member.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-cyan-400 hover:text-cyan-300 transition-colors duration-200"
-                    aria-label={`Visit ${member.name}'s GitHub profile`}
-                  >
-                    <svg
-                      className="w-6 h-6"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.605-.015 2.906-.015 3.3 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-                    </svg>
-                  </a> */}
-                </div>
+                <a
+                  href={member.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[11px] font-mono text-cyan-400 hover:text-cyan-300"
+                >
+                  [LINKEDIN]
+                </a>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Project GitHub Link */}
+        {/* GitHub Link */}
         <div className="text-center">
-          <h2 className="text-2xl sm:text-3xl font-semibold text-white mb-4">
-            Explore the Project
-          </h2>
           <a
             href="https://github.com/DanielBlesson/EMOJI_CIPHER.git"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block px-6 py-3 bg-cyan-500 text-white font-semibold rounded-md shadow-md hover:bg-cyan-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-400"
-            aria-label="Visit WebScanner's GitHub repository"
+            className="inline-block px-8 py-3 bg-cyan-500 hover:bg-cyan-400 text-gray-950 font-mono font-bold text-sm uppercase tracking-wider rounded shadow-[0_0_20px_rgba(0,243,255,0.4)] transition-all"
           >
-            View on GitHub
+            EXPLORE ON GITHUB →
           </a>
         </div>
       </div>
