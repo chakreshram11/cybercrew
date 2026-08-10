@@ -3,16 +3,16 @@ import { useNavigate } from "react-router-dom";
 import CyberCard from "../components/CyberCard";
 import CyberBadge from "../components/CyberBadge";
 
-import chitti from "../linkedin images/chittibabu.jpg";
-import priya from "../linkedin images/priya.jpg";
-import gopi from "../linkedin images/GOPI.jpeg";
-import sai from "../linkedin images/Sai.jpg";
-import chakresh from "../linkedin images/chakresh.png";
-import Harsha from "../linkedin images/Harsha.jpg";
-import crypto1 from "../assets/crypto1.jpg";
-import crypto2 from "../assets/crypto2.jpg";
-import crypto3 from "../assets/crypto3.jpg";
-import crypto4 from "../assets/crypto4.jpg";
+const chitti = "https://hrbyhgmhjswugkmeuzdt.supabase.co/storage/v1/object/public/cybercrew-assets/team/1786348495035_chittibabu.jpg";
+const priya = "https://hrbyhgmhjswugkmeuzdt.supabase.co/storage/v1/object/public/cybercrew-assets/team/1786348499562_priya.jpg";
+const gopi = "https://hrbyhgmhjswugkmeuzdt.supabase.co/storage/v1/object/public/cybercrew-assets/team/1786348497608_GOPI.jpeg";
+const sai = "https://hrbyhgmhjswugkmeuzdt.supabase.co/storage/v1/object/public/cybercrew-assets/team/1786348501544_Sai.jpg";
+const chakresh = "https://hrbyhgmhjswugkmeuzdt.supabase.co/storage/v1/object/public/cybercrew-assets/team/1786348494011_chakresh.png";
+const Harsha = "https://hrbyhgmhjswugkmeuzdt.supabase.co/storage/v1/object/public/cybercrew-assets/team/1786348498244_Harsha.jpg";
+const crypto1 = "https://hrbyhgmhjswugkmeuzdt.supabase.co/storage/v1/object/public/cybercrew-assets/assets/1786348480902_crypto1.jpg";
+const crypto2 = "https://hrbyhgmhjswugkmeuzdt.supabase.co/storage/v1/object/public/cybercrew-assets/assets/1786348481271_crypto2.jpg";
+const crypto3 = "https://hrbyhgmhjswugkmeuzdt.supabase.co/storage/v1/object/public/cybercrew-assets/assets/1786348481573_crypto3.jpg";
+const crypto4 = "https://hrbyhgmhjswugkmeuzdt.supabase.co/storage/v1/object/public/cybercrew-assets/assets/1786348481920_crypto4.jpg";
 
 function EncryptoWeb() {
   const navigate = useNavigate();

@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 import CyberCard from "../components/CyberCard";
 import CyberBadge from "../components/CyberBadge";
 
-import emoji1 from "../assets/emojicipher1.png";
-import emoji2 from "../assets/emojicipher2.png";
-import daniel from "../linkedin images/Daniel.jpg";
-import arshith from "../linkedin images/Arshith.jpg";
+const emoji1 = "https://hrbyhgmhjswugkmeuzdt.supabase.co/storage/v1/object/public/cybercrew-assets/assets/1786348486397_emojicipher1.png";
+const emoji2 = "https://hrbyhgmhjswugkmeuzdt.supabase.co/storage/v1/object/public/cybercrew-assets/assets/1786348487516_emojicipher2.png";
+const daniel = "https://hrbyhgmhjswugkmeuzdt.supabase.co/storage/v1/object/public/cybercrew-assets/team/1786348495451_Daniel.jpg";
+const arshith = "https://hrbyhgmhjswugkmeuzdt.supabase.co/storage/v1/object/public/cybercrew-assets/team/1786348491828_Arshith.jpg";
 
 function EmojiChipher() {
   const navigate = useNavigate();

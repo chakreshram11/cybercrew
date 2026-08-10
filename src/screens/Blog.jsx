@@ -1,28 +1,45 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { supabase } from "../lib/supabase";
 import CyberCard from "../components/CyberCard";
 import CyberBadge from "../components/CyberBadge";
 
 function Blog() {
   const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("/Blogs.json")
-      .then((res) => res.json())
-      .then((data) => setBlogs(data))
-      .catch((err) => console.error("Error fetching blogs:", err));
+    async function loadBlogs() {
+      setLoading(true);
+      try {
+        const { data } = await supabase.from("cyber_blogs").select("*").order("id", { ascending: false });
+        if (data) {
+          const formatted = data.map((b) => ({
+            ...b,
+            description: b.description || b.content,
+            images: b.images && b.images.length > 0 ? b.images : b.image_url ? [b.image_url] : [],
+          }));
+          setBlogs(formatted);
+        }
+      } catch (err) {
+        console.error("Error loading blogs from Supabase:", err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadBlogs();
   }, []);
 
   const filteredBlogs = blogs.filter(
     (b) =>
-      b.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      b.description.toLowerCase().includes(searchTerm.toLowerCase())
+      (b.title || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (b.description || "").toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
-    <section className="bg-cyber-dark min-h-screen text-white py-12 px-4 sm:px-6 lg:px-8 bg-cyber-grid">
+    <section className="bg-cyber-dark min-h-screen text-white py-12 px-4 sm:px-6 lg:px-8 bg-cyber-grid font-mono">
       <div className="max-w-6xl mx-auto">
         <div className="mb-6 text-left">
           <button
@@ -58,7 +75,7 @@ function Blog() {
           </div>
         </div>
 
-        {blogs.length === 0 ? (
+        {loading ? (
           <div className="flex justify-center items-center h-64 font-mono text-cyan-400 animate-pulse">
             LOADING RESEARCH BLOGS...
           </div>
@@ -69,7 +86,7 @@ function Blog() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredBlogs.map((blog) => (
-              <Link to={`/blog/${blog.id}`} key={blog.id || blog.title}>
+              <Link to={`/blog/${blog.id}`} key={blog.id}>
                 <CyberCard
                   title={blog.title}
                   subtitle="ARTICLE // READ"

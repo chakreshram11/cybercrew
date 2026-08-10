@@ -1,28 +1,46 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { supabase } from "../lib/supabase";
 import CyberCard from "../components/CyberCard";
 import CyberBadge from "../components/CyberBadge";
 
 function Projects() {
   const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("/project.json")
-      .then((res) => res.json())
-      .then((data) => setProjects(data))
-      .catch((err) => console.error("Error loading projects:", err));
+    async function loadProjects() {
+      setLoading(true);
+      try {
+        const { data } = await supabase.from("cyber_projects").select("*").order("id", { ascending: true });
+        if (data) {
+          const formatted = data.map((p) => ({
+            ...p,
+            name: p.title || p.name,
+            path: `/project/${p.id}`,
+            image: p.img_url || p.image,
+          }));
+          setProjects(formatted);
+        }
+      } catch (err) {
+        console.error("Error loading projects from Supabase:", err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadProjects();
   }, []);
 
   const filteredProjects = projects.filter(
     (p) =>
-      p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      p.description.toLowerCase().includes(searchTerm.toLowerCase())
+      (p.name || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (p.description || "").toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
-    <section className="w-full bg-cyber-dark text-white min-h-screen py-12 px-4 sm:px-6 lg:px-8 bg-cyber-grid">
+    <section className="w-full bg-cyber-dark text-white min-h-screen py-12 px-4 sm:px-6 lg:px-8 bg-cyber-grid font-mono">
       <div className="max-w-6xl mx-auto">
         <div className="mb-6 text-left">
           <button
@@ -58,7 +76,7 @@ function Projects() {
           </div>
         </div>
 
-        {projects.length === 0 ? (
+        {loading ? (
           <div className="flex justify-center items-center h-64 font-mono text-cyan-400 animate-pulse">
             LOADING SECURITY PROJECTS...
           </div>
@@ -69,16 +87,30 @@ function Projects() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredProjects.map((project) => (
-              <Link to={project.path} key={project.id}>
+              <Link to={`/project/${project.id}`} key={project.id}>
                 <CyberCard
                   title={project.name}
-                  subtitle="SECURITY APP"
-                  badgeText="ACTIVE"
+                  subtitle={project.category || "SECURITY APP"}
+                  badgeText={project.status || "ACTIVE"}
                   badgeColor="cyan"
+                  image={project.image || project.img_url}
                 >
-                  <p className="text-gray-300 font-mono text-xs line-clamp-4 leading-relaxed">
+                  <p className="text-gray-300 font-mono text-xs line-clamp-4 leading-relaxed mb-3">
                     {project.description}
                   </p>
+                  {project.github_url && (
+                    <div className="pt-2 border-t border-gray-800 flex justify-end">
+                      <a
+                        href={project.github_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="inline-flex items-center gap-1.5 px-3 py-1 bg-gray-900 border border-cyan-500/40 text-cyan-400 font-mono text-[11px] font-bold rounded hover:bg-cyan-500 hover:text-gray-950 transition-colors"
+                      >
+                        ⚡ GIT REPO →
+                      </a>
+                    </div>
+                  )}
                 </CyberCard>
               </Link>
             ))}

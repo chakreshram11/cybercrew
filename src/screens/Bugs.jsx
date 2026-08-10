@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { supabase } from "../lib/supabase";
 import CyberCard from "../components/CyberCard";
 import CyberBadge from "../components/CyberBadge";
 
@@ -10,32 +11,35 @@ function Bugs() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setLoading(true);
-    fetch("/Bug.json")
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error(`Failed to fetch bug.json: ${res.status}`);
+    async function loadBugs() {
+      setLoading(true);
+      try {
+        const { data } = await supabase.from("cyber_bugs").select("*").order("id", { ascending: false });
+        if (data) {
+          const formatted = data.map((b) => ({
+            ...b,
+            description: b.description || b.details,
+            images: b.images && b.images.length > 0 ? b.images : b.image_url ? [b.image_url] : [],
+          }));
+          setBugs(formatted);
         }
-        return res.json();
-      })
-      .then((data) => {
-        setBugs(data);
-        setLoading(false);
-      })
-      .catch((err) => {
+      } catch (err) {
         console.error("Error fetching bugs:", err);
+      } finally {
         setLoading(false);
-      });
+      }
+    }
+    loadBugs();
   }, []);
 
   const filteredBugs = bugs.filter(
     (bug) =>
-      bug.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      bug.description.toLowerCase().includes(searchTerm.toLowerCase())
+      (bug.title || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (bug.description || "").toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
-    <section className="bg-cyber-dark min-h-screen text-white py-12 px-4 sm:px-6 lg:px-8 bg-cyber-grid">
+    <section className="bg-cyber-dark min-h-screen text-white py-12 px-4 sm:px-6 lg:px-8 bg-cyber-grid font-mono">
       <div className="max-w-6xl mx-auto">
         <div className="mb-6 text-left">
           <button
@@ -82,11 +86,11 @@ function Bugs() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredBugs.map((bug) => (
-              <Link to={`/bug/${bug.id}`} key={bug.id || bug.title}>
+              <Link to={`/bug/${bug.id}`} key={bug.id}>
                 <CyberCard
                   title={bug.title}
                   subtitle="SECURITY RECON"
-                  badgeText="RESOLVED"
+                  badgeText={bug.status || "RESOLVED"}
                   badgeColor="green"
                   image={bug.images?.[0]}
                 >
@@ -95,7 +99,7 @@ function Bugs() {
                   </p>
                   {bug.students?.length > 0 && (
                     <div className="pt-2 border-t border-gray-800 text-[11px] font-mono text-cyan-300">
-                      Founders/Researchers:{" "}
+                      Researchers:{" "}
                       <span className="text-white font-semibold">
                         {bug.students.map((s) => s.name).join(", ")}
                       </span>

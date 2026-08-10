@@ -1,21 +1,14 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
+import { supabase } from "../lib/supabase";
 import ScrollToTop from "../components/ScrollToTop";
 import LiveThreatTicker from "../components/LiveThreatTicker";
 import CyberQuizWidget from "../components/CyberQuizWidget";
 import CyberCard from "../components/CyberCard";
 import CyberBadge from "../components/CyberBadge";
 import GlitchText from "../components/GlitchText";
-import Logo from "../assets/cybercrewlogo.png";
 
-import chairman from "../assets/chairman_sir.jpg";
-import revathi from "../assets/revathi_madam.jpeg";
-import ramkrishna from "../assets/rk_sir.jpg";
-import dean from "../assets/dean.jpg";
-import dhanush from "../assets/dhanush.jpg";
-import somesh from "../assets/somesh_sir.jpg";
-import ajay from "../assets/ajay_anna.jpg";
-import bhanu from "../assets/bhanu.jpg";
+const Logo = "https://hrbyhgmhjswugkmeuzdt.supabase.co/storage/v1/object/public/cybercrew-assets/assets/1786348482392_cybercrewlogo.png";
 
 function Home() {
   const [typedText, setTypedText] = useState("");
@@ -23,6 +16,7 @@ function Home() {
   const [blogs, setBlogs] = useState([]);
   const [bugs, setBugs] = useState([]);
   const [projects, setProjects] = useState([]);
+  const [crewMembers, setCrewMembers] = useState([]);
 
   const phrases = useMemo(
     () => [
@@ -50,20 +44,40 @@ function Home() {
   }, [typedText, index, phrases]);
 
   useEffect(() => {
-    fetch("/Blogs.json")
-      .then((res) => res.json())
-      .then((data) => setBlogs(data))
-      .catch((err) => console.error("Error loading blogs:", err));
+    async function loadSupabaseHomeData() {
+      try {
+        // 1. Crew Members
+        let { data: crewData } = await supabase.from("cyber_crew_about").select("*").order("id", { ascending: true });
+        if (!crewData || crewData.length === 0) {
+          const { data: teamData } = await supabase.from("cyber_team").select("*").order("id", { ascending: true });
+          crewData = teamData;
+        }
+        if (crewData) {
+          setCrewMembers(crewData.map((c) => ({ src: c.avatar_url, name: c.name, role: c.role })));
+        }
 
-    fetch("/Bug.json")
-      .then((res) => res.json())
-      .then((data) => setBugs(data))
-      .catch((err) => console.error("Error loading bugs:", err));
+        // 2. Blogs
+        const { data: blogData } = await supabase.from("cyber_blogs").select("*").order("id", { ascending: false });
+        if (blogData) {
+          setBlogs(blogData.map((b) => ({ ...b, description: b.content || b.description, images: b.image_url ? [b.image_url] : [] })));
+        }
 
-    fetch("/project.json")
-      .then((res) => res.json())
-      .then((data) => setProjects(data))
-      .catch((err) => console.error("Error loading projects:", err));
+        // 3. Bugs
+        const { data: bugData } = await supabase.from("cyber_bugs").select("*").order("id", { ascending: false });
+        if (bugData) {
+          setBugs(bugData.map((b) => ({ ...b, description: b.details || b.description, images: b.image_url ? [b.image_url] : [] })));
+        }
+
+        // 4. Projects
+        const { data: projData } = await supabase.from("cyber_projects").select("*").order("id", { ascending: false });
+        if (projData) {
+          setProjects(projData.map((p) => ({ ...p, name: p.title || p.name, path: p.doc_url || p.path, image: p.img_url || p.image })));
+        }
+      } catch (err) {
+        console.error("Error loading home data from Supabase:", err);
+      }
+    }
+    loadSupabaseHomeData();
   }, []);
 
   return (
@@ -133,34 +147,27 @@ function Home() {
           </p>
 
           {/* Team Leadership Avatars */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-6 mt-12">
-            {[
-              { src: chairman, name: "P. Viswam", role: "Chairman Sir" },
-              { src: revathi, name: "D. Revathi", role: "KIET Principal" },
-              { src: ramkrishna, name: "Y. Rama Krishna", role: "KIET-W Principal" },
-              { src: dean, name: "RamKiran", role: "Dean & Vice Principal" },
-              { src: somesh, name: "S.N.S. Somesh", role: "Cyber Coordinator" },
-              { src: dhanush, name: "Dhanush", role: "Co-Founder" },
-              { src: ajay, name: "S. Ajay", role: "Co-Founder" },
-              { src: bhanu, name: "G. Bhanu", role: "Lead Member" },
-            ].map((member, idx) => (
-              <div key={idx} className="flex flex-col items-center group">
-                <div className="relative mb-3">
-                  <img
-                    src={member.src}
-                    alt={member.name}
-                    className="h-28 w-28 sm:h-32 sm:w-32 rounded-full object-cover border-2 border-cyan-500/40 shadow-[0_0_15px_rgba(0,243,255,0.2)] transition-all duration-300 group-hover:border-cyan-400 group-hover:scale-105 group-hover:shadow-[0_0_25px_rgba(0,243,255,0.5)]"
-                    loading="lazy"
-                  />
-                  <div className="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full bg-emerald-400 border-2 border-gray-900 animate-pulse"></div>
+          {crewMembers.length > 0 && (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-6 mt-12">
+              {crewMembers.map((member, idx) => (
+                <div key={idx} className="flex flex-col items-center group">
+                  <div className="relative mb-3">
+                    <img
+                      src={member.src || "/placeholder.jpg"}
+                      alt={member.name}
+                      className="h-28 w-28 sm:h-32 sm:w-32 rounded-full object-cover border-2 border-cyan-500/40 shadow-[0_0_15px_rgba(0,243,255,0.2)] transition-all duration-300 group-hover:border-cyan-400 group-hover:scale-105 group-hover:shadow-[0_0_25px_rgba(0,243,255,0.5)]"
+                      loading="lazy"
+                    />
+                    <div className="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full bg-emerald-400 border-2 border-gray-900 animate-pulse"></div>
+                  </div>
+                  <h4 className="text-sm font-mono font-bold text-white group-hover:text-cyan-300 transition-colors">
+                    {member.name}
+                  </h4>
+                  <span className="text-xs font-mono text-cyan-400/80">{member.role}</span>
                 </div>
-                <h4 className="text-sm font-mono font-bold text-white group-hover:text-cyan-300 transition-colors">
-                  {member.name}
-                </h4>
-                <span className="text-xs font-mono text-cyan-400/80">{member.role}</span>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
@@ -179,114 +186,121 @@ function Home() {
       </section>
 
       {/* Latest Discovered Bugs Section */}
-      <section className="w-full bg-cyber-slate/90 text-white py-16 px-4 sm:px-6 lg:px-8 border-t border-cyan-500/20">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col sm:flex-row items-center justify-between mb-10 gap-4">
-            <div>
-              <CyberBadge text="VULNERABILITY RESEARCH" type="red" className="mb-2" />
-              <h2 className="text-3xl sm:text-4xl font-mono font-bold text-cyan-400 text-glow-cyan">
-                BUGS WE'VE FOUND
-              </h2>
-            </div>
-            <Link to="/bugs">
-              <button className="text-xs font-mono font-bold text-cyan-400 hover:text-cyan-300 flex items-center gap-1">
-                VIEW ALL DISCOVERED BUGS →
-              </button>
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {bugs.slice(0, 3).map((bug) => (
-              <Link to={`/bug/${bug.id}`} key={bug.id}>
-                <CyberCard
-                  title={bug.title}
-                  subtitle="RECON // LOG"
-                  badgeText="RESOLVED"
-                  badgeColor="green"
-                  image={bug.images?.[0]}
-                >
-                  <p className="line-clamp-3 text-gray-300 font-mono text-xs leading-relaxed">
-                    {bug.description}
-                  </p>
-                </CyberCard>
+      {bugs.length > 0 && (
+        <section className="w-full bg-cyber-slate/90 text-white py-16 px-4 sm:px-6 lg:px-8 border-t border-cyan-500/20">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex flex-col sm:flex-row items-center justify-between mb-10 gap-4">
+              <div>
+                <CyberBadge text="VULNERABILITY RESEARCH" type="red" className="mb-2" />
+                <h2 className="text-3xl sm:text-4xl font-mono font-bold text-cyan-400 text-glow-cyan">
+                  BUGS WE'VE FOUND
+                </h2>
+              </div>
+              <Link to="/bugs">
+                <button className="text-xs font-mono font-bold text-cyan-400 hover:text-cyan-300 flex items-center gap-1">
+                  VIEW ALL DISCOVERED BUGS →
+                </button>
               </Link>
-            ))}
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {bugs.slice(0, 3).map((bug) => (
+                <Link to={`/bug/${bug.id}`} key={bug.id}>
+                  <CyberCard
+                    title={bug.title}
+                    subtitle="RECON // LOG"
+                    badgeText={bug.status || "RESOLVED"}
+                    badgeColor="green"
+                    image={bug.images?.[0]}
+                  >
+                    <p className="line-clamp-3 text-gray-300 font-mono text-xs leading-relaxed">
+                      {bug.description}
+                    </p>
+                  </CyberCard>
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Featured Research & Blogs Section */}
-      <section className="w-full bg-cyber-dark text-white py-16 px-4 sm:px-6 lg:px-8 border-t border-cyan-500/20 bg-cyber-grid">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col sm:flex-row items-center justify-between mb-10 gap-4">
-            <div>
-              <CyberBadge text="RESEARCH & ADVISORIES" type="cyan" className="mb-2" />
-              <h2 className="text-3xl sm:text-4xl font-mono font-bold text-cyan-400 text-glow-cyan">
-                LATEST BLOGS & ARTICLES
-              </h2>
-            </div>
-            <Link to="/blogs">
-              <button className="text-xs font-mono font-bold text-cyan-400 hover:text-cyan-300 flex items-center gap-1">
-                VIEW ALL BLOGS →
-              </button>
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {blogs.slice(0, 3).map((blog) => (
-              <Link to={`/blog/${blog.id}`} key={blog.id}>
-                <CyberCard
-                  title={blog.title}
-                  subtitle="RESEARCH ARTICLE"
-                  badgeText="PUBLISHED"
-                  badgeColor="purple"
-                  image={blog.images?.[0]}
-                >
-                  <p className="line-clamp-3 text-gray-300 font-mono text-xs leading-relaxed">
-                    {blog.description}
-                  </p>
-                </CyberCard>
+      {blogs.length > 0 && (
+        <section className="w-full bg-cyber-dark text-white py-16 px-4 sm:px-6 lg:px-8 border-t border-cyan-500/20 bg-cyber-grid">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex flex-col sm:flex-row items-center justify-between mb-10 gap-4">
+              <div>
+                <CyberBadge text="RESEARCH & ADVISORIES" type="cyan" className="mb-2" />
+                <h2 className="text-3xl sm:text-4xl font-mono font-bold text-cyan-400 text-glow-cyan">
+                  LATEST BLOGS & ARTICLES
+                </h2>
+              </div>
+              <Link to="/blogs">
+                <button className="text-xs font-mono font-bold text-cyan-400 hover:text-cyan-300 flex items-center gap-1">
+                  VIEW ALL BLOGS →
+                </button>
               </Link>
-            ))}
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {blogs.slice(0, 3).map((blog) => (
+                <Link to={`/blog/${blog.id}`} key={blog.id}>
+                  <CyberCard
+                    title={blog.title}
+                    subtitle="RESEARCH ARTICLE"
+                    badgeText="PUBLISHED"
+                    badgeColor="purple"
+                    image={blog.images?.[0]}
+                  >
+                    <p className="line-clamp-3 text-gray-300 font-mono text-xs leading-relaxed">
+                      {blog.description}
+                    </p>
+                  </CyberCard>
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Featured Projects Section */}
-      <section className="w-full bg-cyber-dark text-white py-16 px-4 sm:px-6 lg:px-8 border-t border-cyan-500/20 bg-cyber-grid">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col sm:flex-row items-center justify-between mb-10 gap-4">
-            <div>
-              <CyberBadge text="PORTFOLIO // TOOLS" type="cyan" className="mb-2" />
-              <h2 className="text-3xl sm:text-4xl font-mono font-bold text-cyan-400 text-glow-cyan">
-                CYBER CREW PROJECTS
-              </h2>
-            </div>
-            <Link to="/projects">
-              <button className="text-xs font-mono font-bold text-cyan-400 hover:text-cyan-300 flex items-center gap-1">
-                VIEW ALL PROJECTS →
-              </button>
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects.slice(0, 3).map((project) => (
-              <Link to={project.path} key={project.id}>
-                <CyberCard
-                  title={project.name}
-                  subtitle="ACTIVE TOOL"
-                  badgeText="ACTIVE"
-                  badgeColor="cyan"
-                >
-                  <p className="line-clamp-4 text-gray-300 font-mono text-xs leading-relaxed">
-                    {project.description}
-                  </p>
-                </CyberCard>
+      {projects.length > 0 && (
+        <section className="w-full bg-cyber-dark text-white py-16 px-4 sm:px-6 lg:px-8 border-t border-cyan-500/20 bg-cyber-grid">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex flex-col sm:flex-row items-center justify-between mb-10 gap-4">
+              <div>
+                <CyberBadge text="PORTFOLIO // TOOLS" type="cyan" className="mb-2" />
+                <h2 className="text-3xl sm:text-4xl font-mono font-bold text-cyan-400 text-glow-cyan">
+                  CYBER CREW PROJECTS
+                </h2>
+              </div>
+              <Link to="/projects">
+                <button className="text-xs font-mono font-bold text-cyan-400 hover:text-cyan-300 flex items-center gap-1">
+                  VIEW ALL PROJECTS →
+                </button>
               </Link>
-            ))}
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {projects.slice(0, 3).map((project) => (
+                <Link to={`/project/${project.id}`} key={project.id}>
+                  <CyberCard
+                    title={project.name}
+                    subtitle={project.category || "ACTIVE TOOL"}
+                    badgeText={project.status || "ACTIVE"}
+                    badgeColor="cyan"
+                    image={project.image}
+                  >
+                    <p className="line-clamp-4 text-gray-300 font-mono text-xs leading-relaxed">
+                      {project.description}
+                    </p>
+                  </CyberCard>
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
     </>
   );
 }

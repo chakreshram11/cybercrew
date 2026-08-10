@@ -2,13 +2,13 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import CyberCard from "../components/CyberCard";
 import CyberBadge from "../components/CyberBadge";
-import Webscanner from "../assets/Webscanner.png";
-import Pradeep from "../linkedin images/Pradeep.jpg";
-import Sanjay from "../linkedin images/Sanjay.jpg";
-import Thabitha from "../linkedin images/Thabitha.jpg";
-import sahithya from "../linkedin images/Sahithya.jpg";
-import Gowtham from "../linkedin images/Gowtham.jpg";
-import jyothi from "../linkedin images/Jyothi.jpg";
+const Webscanner = "https://hrbyhgmhjswugkmeuzdt.supabase.co/storage/v1/object/public/cybercrew-assets/assets/1786348491517_Webscanner.png";
+const Pradeep = "https://hrbyhgmhjswugkmeuzdt.supabase.co/storage/v1/object/public/cybercrew-assets/team/1786348499337_Pradeep.jpg";
+const Sanjay = "https://hrbyhgmhjswugkmeuzdt.supabase.co/storage/v1/object/public/cybercrew-assets/team/1786348501914_Sanjay.jpg";
+const Thabitha = "https://hrbyhgmhjswugkmeuzdt.supabase.co/storage/v1/object/public/cybercrew-assets/team/1786348504515_Thabitha.jpg";
+const sahithya = "https://hrbyhgmhjswugkmeuzdt.supabase.co/storage/v1/object/public/cybercrew-assets/team/1786348500699_Sahithya.jpg";
+const Gowtham = "https://hrbyhgmhjswugkmeuzdt.supabase.co/storage/v1/object/public/cybercrew-assets/team/1786348497854_Gowtham.jpg";
+const jyothi = "https://hrbyhgmhjswugkmeuzdt.supabase.co/storage/v1/object/public/cybercrew-assets/team/1786348498687_Jyothi.jpg";
 
 function WebScanner() {
   const navigate = useNavigate();

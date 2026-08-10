@@ -1,48 +1,75 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Markdown from "react-markdown";
+import { supabase } from "../lib/supabase";
 import CyberBadge from "../components/CyberBadge";
 
 function BugsDetails() {
   const { id } = useParams();
   const [bug, setBug] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("/Bug.json")
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error(`Failed to fetch bug.json: ${res.status}`);
-        }
-        return res.json();
-      })
-      .then((data) => {
-        const selectedBug = data.find((b) => b.id === id);
-        if (selectedBug) {
-          selectedBug.images = (selectedBug.images || []).map((img) =>
-            img.startsWith("./") ? img.replace("./", "/") : img.startsWith("/") ? img : `/${img}`
-          );
-          selectedBug.students = (selectedBug.students || []).map((student) => ({
-            ...student,
-            photo: student.photo
-              ? student.photo.startsWith("./")
-                ? student.photo.replace("./", "/")
-                : student.photo.startsWith("/")
-                ? student.photo
-                : `/${student.photo}`
-              : "/placeholder.jpg",
-          }));
-          setBug(selectedBug);
+    async function loadBugDetails() {
+      setLoading(true);
+      setError(null);
+
+      try {
+        // Fetch master team roster for dynamic photo & linkedin lookup
+        const { data: teamData } = await supabase.from("cyber_team").select("*");
+        const { data: crewData } = await supabase.from("cyber_crew_about").select("*");
+        const rosterMap = new Map();
+        [...(teamData || []), ...(crewData || [])].forEach((m) => {
+          if (m.name) {
+            rosterMap.set(m.name.toLowerCase(), {
+              photo: m.avatar_url || m.image || m.photo,
+              linkedin: m.linkedin_url || m.linkedin,
+            });
+          }
+        });
+
+        const { data } = await supabase
+          .from("cyber_bugs")
+          .select("*")
+          .eq("id", id)
+          .maybeSingle();
+
+        if (data) {
+          const resolvedStudents = (data.students || []).map((student) => {
+            const nameKey = (typeof student === "string" ? student : student.name || "").toLowerCase();
+            const rosterInfo = rosterMap.get(nameKey) || {};
+            return {
+              name: typeof student === "string" ? student : student.name,
+              photo: (typeof student === "object" && student.photo) || rosterInfo.photo || "/placeholder.jpg",
+              linkedin: (typeof student === "object" && (student.linkedin || student.linkedin_url)) || rosterInfo.linkedin || "",
+            };
+          });
+
+          setBug({
+            ...data,
+            description: data.details || data.description,
+            content: data.details || data.content || data.description,
+            images: data.images && data.images.length > 0 ? data.images : data.image_url ? [data.image_url] : [],
+            students: resolvedStudents,
+            date: data.date || data.created_at,
+          });
         } else {
-          setError(`Vulnerability Advisory with ID ${id} not found`);
+          setError(`Vulnerability Advisory with ID "${id}" not found.`);
         }
-      })
-      .catch((err) => {
-        console.error("Error fetching bug:", err);
+      } catch (err) {
+        console.error("Error fetching bug details:", err);
         setError("Failed to load vulnerability details. Please try again later.");
-      });
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    if (id) {
+      loadBugDetails();
+    }
   }, [id]);
 
   const openImageModal = (image) => {
@@ -55,17 +82,23 @@ function BugsDetails() {
     setSelectedImage(null);
   };
 
-  if (error)
-    return (
-      <div className="flex justify-center items-center min-h-screen bg-cyber-dark text-rose-400 font-mono">
-        {error}
-      </div>
-    );
-
-  if (!bug)
+  if (loading)
     return (
       <div className="flex justify-center items-center min-h-screen bg-cyber-dark text-cyan-400 font-mono animate-pulse">
         LOADING VULNERABILITY REPORT...
+      </div>
+    );
+
+  if (error || !bug)
+    return (
+      <div className="flex flex-col justify-center items-center min-h-screen bg-cyber-dark text-rose-400 font-mono p-4">
+        <p className="mb-4 font-bold">{error || "Vulnerability Report Not Found"}</p>
+        <button
+          onClick={() => navigate("/bugs")}
+          className="px-4 py-2 bg-cyan-500 text-gray-950 font-bold rounded hover:bg-cyan-400"
+        >
+          ← RETURN TO BUGS LIST
+        </button>
       </div>
     );
 
@@ -85,7 +118,7 @@ function BugsDetails() {
         <article className="cyber-card p-6 sm:p-10 rounded-xl border border-rose-500/30">
           <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
             <CyberBadge text="VULNERABILITY REPORT // LOG" type="red" />
-            <CyberBadge text="STATUS: RESOLVED & PATCHED" type="green" />
+            <CyberBadge text={`STATUS: ${bug.status || "RESOLVED & PATCHED"}`} type="green" />
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-mono font-bold text-cyan-400 text-glow-cyan leading-tight mb-3">
@@ -105,7 +138,7 @@ function BugsDetails() {
             </span>
           </p>
 
-          {/* Screenshots Gallery */}
+          {/* Proof of Concept Screenshots Gallery */}
           {bug.images?.length > 0 && (
             <div className="mb-8">
               <h2 className="text-sm font-mono font-bold text-cyan-400 uppercase tracking-wider mb-4">
@@ -145,7 +178,7 @@ function BugsDetails() {
             )}
           </section>
 
-          {/* Contributors / Researchers */}
+          {/* Contributors / Security Researchers */}
           {bug.students?.length > 0 && (
             <div className="pt-6 border-t border-gray-800">
               <h2 className="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider mb-4">
@@ -160,7 +193,7 @@ function BugsDetails() {
                     <img
                       src={student.photo}
                       alt={student.name}
-                      className="w-20 h-20 rounded-full object-cover border border-cyan-500/40 mb-2"
+                      className="w-20 h-20 rounded-full object-cover border border-cyan-500/40 mb-2 cursor-pointer"
                       onClick={() => openImageModal(student.photo)}
                     />
                     <span className="text-xs font-mono font-bold text-white mb-1">

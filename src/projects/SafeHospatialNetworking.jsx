@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import CyberCard from "../components/CyberCard";
 import CyberBadge from "../components/CyberBadge";
 
-import secure from "../assets/hospital.jpg";
-import vasu from "../linkedin images/vasu.jpg";
+const secure = "https://hrbyhgmhjswugkmeuzdt.supabase.co/storage/v1/object/public/cybercrew-assets/assets/1786348489367_hospital.jpg";
+const vasu = "https://hrbyhgmhjswugkmeuzdt.supabase.co/storage/v1/object/public/cybercrew-assets/team/1786348506081_vasu.jpg";
 
 function SafeHospatialNetworking() {
   const navigate = useNavigate();

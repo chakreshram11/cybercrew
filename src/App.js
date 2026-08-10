@@ -7,7 +7,9 @@ import About from './screens/About';
 import Blog from './screens/Blog';
 import Contact from './screens/Contact';
 import Projects from './screens/Projects';
+import ProjectDetails from './screens/ProjectDetails';
 import Login from './screens/Login';
+import Admin from './screens/Admin';
 import Tools from './screens/Tools';
 import BlogDetails from './screens/BlogDetails';
 import Bugs from './screens/Bugs';
@@ -36,9 +38,11 @@ function App() {
             <Route path="/bug/:id" element={<BugsDetails />} />
             <Route path="/bugs" element={<Bugs />}/>
             <Route path='/projects' element={<Projects />} />
+            <Route path='/project/:id' element={<ProjectDetails />} />
             <Route path='/tools' element={<Tools />} />
             <Route path='/contact' element={<Contact />} />
             <Route path='/login' element={<Login />} />
+            <Route path='/admin' element={<Admin />} />
             <Route path='/deepnetgaurd' element={<DeepNetGaurd />} />
             <Route path='/emojicipher' element={<EmojiChipher />} />
             <Route path='/encryptoweb' element={<EncryptoWeb />} />

@@ -3,11 +3,11 @@ import { useNavigate } from "react-router-dom";
 import CyberCard from "../components/CyberCard";
 import CyberBadge from "../components/CyberBadge";
 
-import net1 from "../assets/deepnet1.jpg";
-import net2 from "../assets/deepnet2.jpg";
-import daniel from "../linkedin images/Daniel.jpg";
-import arshith from "../linkedin images/Arshith.jpg";
-import sri from "../linkedin images/sri karthik.jpg";
+const net1 = "https://hrbyhgmhjswugkmeuzdt.supabase.co/storage/v1/object/public/cybercrew-assets/assets/1786348483441_deepnet1.jpg";
+const net2 = "https://hrbyhgmhjswugkmeuzdt.supabase.co/storage/v1/object/public/cybercrew-assets/assets/1786348484676_deepnet2.jpg";
+const daniel = "https://hrbyhgmhjswugkmeuzdt.supabase.co/storage/v1/object/public/cybercrew-assets/team/1786348495451_Daniel.jpg";
+const arshith = "https://hrbyhgmhjswugkmeuzdt.supabase.co/storage/v1/object/public/cybercrew-assets/team/1786348491828_Arshith.jpg";
+const sri = "https://hrbyhgmhjswugkmeuzdt.supabase.co/storage/v1/object/public/cybercrew-assets/team/1786348503399_sri_karthik.jpg";
 
 function DeepNetGaurd() {
   const navigate = useNavigate();

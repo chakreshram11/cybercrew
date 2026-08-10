@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Autoplay, EffectFade } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { supabase } from "../lib/supabase";
 import RoadmapStep from "../components/RoadmapStep";
 import CyberBadge from "../components/CyberBadge";
 
@@ -9,15 +10,37 @@ import CyberBadge from "../components/CyberBadge";
 import "swiper/css";
 import "swiper/css/effect-fade";
 
-// Import team images
-import team1 from "../assets/blog1-1.jpeg";
-import team2 from "../assets/blog2-1.jpg";
-import team3 from "../assets/blog3-1.jpg";
-import team4 from "../assets/groupphoto.jpg";
-
 function About() {
   const navigate = useNavigate();
   const [activeTier, setActiveTier] = useState(null);
+  const [sliderImages, setSliderImages] = useState([]);
+
+  useEffect(() => {
+    async function loadSliderImages() {
+      try {
+        // 1. Try fetching dedicated About page scroller photos from Supabase
+        const { data: galData } = await supabase.from("cyber_about_gallery").select("*").order("id", { ascending: false });
+        if (galData && galData.length > 0) {
+          setSliderImages(galData.map((item) => ({ src: item.image_url, alt: item.title || "Cyber Crew Event" })));
+          return;
+        }
+
+        // 2. Fallback to blog images
+        const { data } = await supabase
+          .from("cyber_blogs")
+          .select("image_url, title")
+          .not("image_url", "is", null)
+          .limit(6);
+
+        if (data && data.length > 0) {
+          setSliderImages(data.map((item) => ({ src: item.image_url, alt: item.title })));
+        }
+      } catch (err) {
+        console.error("Error loading slider images from Supabase:", err);
+      }
+    }
+    loadSliderImages();
+  }, []);
 
   const roadmapSteps = [
     {
@@ -104,42 +127,39 @@ function About() {
       </div>
 
       {/* Image Scroller */}
-      <div className="w-full max-w-[100vw] overflow-hidden border-b border-cyan-500/20">
-        <Swiper
-          spaceBetween={0}
-          slidesPerView={1}
-          loop={true}
-          autoplay={{
-            delay: 4000,
-            disableOnInteraction: false,
-            reverseDirection: true,
-          }}
-          speed={1200}
-          effect="fade"
-          modules={[Autoplay, EffectFade]}
-          className="w-full h-64 sm:h-96 lg:h-[32rem]"
-          dir="rtl"
-        >
-          {[
-            { src: team1, alt: "Cyber Crew Event 1" },
-            { src: team2, alt: "Cyber Crew Event 2" },
-            { src: team3, alt: "Cyber Crew Event 3" },
-            { src: team4, alt: "Cyber Crew Event 4" },
-          ].map((image, index) => (
-            <SwiperSlide key={index}>
-              <div className="relative w-full h-full">
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="w-full h-full object-cover scale-105"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-cyber-dark/40 via-transparent to-cyber-dark"></div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
+      {sliderImages.length > 0 && (
+        <div className="w-full max-w-[100vw] overflow-hidden border-b border-cyan-500/20">
+          <Swiper
+            spaceBetween={0}
+            slidesPerView={1}
+            loop={true}
+            autoplay={{
+              delay: 4000,
+              disableOnInteraction: false,
+              reverseDirection: true,
+            }}
+            speed={1200}
+            effect="fade"
+            modules={[Autoplay, EffectFade]}
+            className="w-full h-64 sm:h-96 lg:h-[32rem]"
+            dir="rtl"
+          >
+            {sliderImages.map((image, index) => (
+              <SwiperSlide key={index}>
+                <div className="relative w-full h-full">
+                  <img
+                    src={image.src}
+                    alt={image.alt || `Cyber Crew Event ${index + 1}`}
+                    className="w-full h-full object-cover scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-b from-cyber-dark/40 via-transparent to-cyber-dark"></div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      )}
 
       {/* Club Introduction */}
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
